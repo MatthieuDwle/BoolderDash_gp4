@@ -34,6 +34,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/asus/Desktop/ShowBoard/out/artifacts/ShowBoard_jar/ShowBoard.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Matthieu Dewaele/Documents/POO_Project/BoolderDash_gp4/lib/ShowBoard.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
