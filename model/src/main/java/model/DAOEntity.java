@@ -66,22 +66,4 @@ abstract class DAOEntity<E extends Entity> {
 	 */
 	public abstract boolean update(E entity);
 
-	/**
-	 * Find.
-	 *
-	 * @param id
-	 *          the id
-	 * @return the e
-	 */
-	public abstract E find(int id);
-
-	/**
-	 * Find.
-	 *
-	 * @param code
-	 *          the code
-	 * @return the e
-	 */
-	public abstract E find(String code);
-
 }
