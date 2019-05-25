@@ -11,7 +11,7 @@ public class Level extends Entity{
 	}
 	
 	public Board getBoard() {
-		return board;
+		return this.board;
 	}
 	
 	private void setBoard(Board board) {
@@ -19,7 +19,7 @@ public class Level extends Entity{
 	}
 	
 	public ArrayList<ActiveEntity> getPawns(){
-		return pawns;
+		return this.pawns;
 	}
 	
 	public void putPawn(ActiveEntity pawn) {
