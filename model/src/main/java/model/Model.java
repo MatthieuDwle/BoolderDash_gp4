@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
-import entity.HelloWorld;
+import entity.Level;
+
 
 /**
  * The Class Model.
@@ -12,45 +13,44 @@ import entity.HelloWorld;
  * @author Jean-Aymeric Diet
  */
 public final class Model extends Observable implements IModel {
-
-	/** The helloWorld. */
-	private HelloWorld helloWorld;
+	/** The Level. */
+private Level level ;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new HelloWorld();
+		this.level = new Level();
 	}
 
 	/**
-     * Gets the hello world.
+     * Gets the level.
      *
-     * @return the hello world
+     * @return the level
      */
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage()
+	 * @see contract.IModel#getLevel()
 	 */
-	public HelloWorld getHelloWorld() {
-		return this.helloWorld;
+	public Level getLevel() {
+		return this.level;
 	}
 
 	/**
-     * Sets the hello world.
+     * Sets the level.
      *
-     * @param helloWorld
-     *            the new hello world
+     * @param level
+     *            the new level
      */
-	private void setHelloWorld(final HelloWorld helloWorld) {
-		this.helloWorld = helloWorld;
+	private void setLevel(Level level) {
+		this.level = level;
 		this.setChanged();
 		this.notifyObservers();
 	}
 
 	/**
-     * Load hello world.
+     * Load level.
      *
      * @param code
      *            the code
@@ -58,12 +58,12 @@ public final class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
+	 * @see contract.IModel#getLevel(java.lang.String)
 	 */
-	public void loadHelloWorld(final String code) {
+	public void loadLevel (int levelNumber) {
 		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setHelloWorld(daoHelloWorld.find(code));
+			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
+			this.setLevel(levelNumber);
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
