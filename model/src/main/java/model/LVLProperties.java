@@ -18,7 +18,6 @@ public class LVLProperties extends Properties{
 	private char dirt;
 	private char gap;
 	private char exit;
-	
 	public LVLProperties () {
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME);
 		

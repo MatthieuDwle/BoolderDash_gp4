@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.SwingUtilities;
@@ -18,15 +20,18 @@ public final class View implements IView, Runnable {
 
 	/** The frame. */
 	private final ViewFrame viewFrame;
-
+	
 	/**
 	 * Instantiates a new view.
 	 *
 	 * @param model
 	 *          the model
 	 */
-	public View(final IModel model) {
+	public View(final IModel model, final int width, final int height, final int sizeFrame) {
 		this.viewFrame = new ViewFrame(model);
+		this.viewFrame.setWidth(width);
+		this.viewFrame.setHeight(height);
+		this.viewFrame.setSizeFrame(sizeFrame);
 		SwingUtilities.invokeLater(this);
 	}
 
@@ -60,7 +65,10 @@ public final class View implements IView, Runnable {
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
-		this.viewFrame.setVisible(true);
+		this.viewFrame.getBoardFrame().setSize(this.viewFrame.getWidth(), this.viewFrame.getHeight());
+		this.viewFrame.getBoardFrame().setDimension(new Dimension(this.viewFrame.getWidth(), this.viewFrame.getHeight()));
+		this.viewFrame.getBoardFrame().setDisplayFrame(new Rectangle(0, 0, this.viewFrame.getWidth(), this.viewFrame.getHeight()));
+		
 	}
 
 	/**
