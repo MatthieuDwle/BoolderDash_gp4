@@ -1,8 +1,8 @@
 package entity;
 
 public class Board {
-	private int width; 
-	private int height;
+	private static int width; 
+	private static int height;
 	
 	public Board(int widht, int height) {
 		this.setWidth();
@@ -13,19 +13,19 @@ public class Board {
 		
 	}
 	
-	public int getWidth() {
+	public static int getWidth() {
 		return width;
 	}
 	
 	public void setWidth() {
-		
+		this.width = width;
 	}
 	
-	public int getHeight() {
+	public static int getHeight() {
 		return height;
 	}
 	
 	public void setHeight() {
-		
+		this.height = height;
 	}
 }
