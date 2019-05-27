@@ -10,14 +10,14 @@ public class LVLProperties extends Properties{
 	 */
 	private static final long serialVersionUID = 7399585872466234911L;
 	private static final String PROPERTIES_FILE_NAME = "model.properties";
-	protected char bob;
-	protected char wall;
-	protected char enemy;
-	protected char rock;
-	protected char crystal;
-	protected char dirt;
-	protected char gap;
-	protected char exit;
+	private char bob;
+	private char wall;
+	private char enemy;
+	private char rock;
+	private char crystal;
+	private char dirt;
+	private char gap;
+	private char exit;
 	public LVLProperties () {
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME);
 		
