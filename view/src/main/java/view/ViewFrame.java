@@ -35,20 +35,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *           the headless exception
 	 */
 	public ViewFrame(final IModel model) throws HeadlessException {
-		this.buildViewFrame(model);
-	}
-
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param gc
-	 *          the gc
-	 */
-	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
-		super(gc);
-		this.buildViewFrame(model);
 	}
 
 	/**
@@ -63,22 +49,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
 		super(title);
-		this.buildViewFrame(model);
-	}
-
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param title
-	 *          the title
-	 * @param gc
-	 *          the gc
-	 */
-	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
-		super(title, gc);
-		this.buildViewFrame(model);
 	}
 
 	/**
@@ -117,32 +87,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	private void setModel(final IModel model) {
 		this.model = model;
-	}
-
-	/**
-	 * Builds the view frame.
-	 *
-	 * @param model
-	 *          the model
-	 */
-	private void buildViewFrame(final IModel model) {
-		this.setModel(model);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.addKeyListener(this);
-		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
-		this.setLocationRelativeTo(null);
-	}
-
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
-	public void printMessage(final String message) {
-		JOptionPane.showMessageDialog(null, message);
 	}
 
 	/*
