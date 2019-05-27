@@ -22,10 +22,10 @@ public class ActiveEntity extends GraphicEntity implements IPawn{
 	}
 	
 	 
-	   public final int getX() {
+	   public int getX() {
 	        return this.getPosition().x;
 	    }
-	   public final int getY() {
+	   public int getY() {
 	        return this.getPosition().y;
 	    }
 }
