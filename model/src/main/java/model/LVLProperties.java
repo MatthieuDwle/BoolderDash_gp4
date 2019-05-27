@@ -5,6 +5,10 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class LVLProperties extends Properties{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7399585872466234911L;
 	private static final String PROPERTIES_FILE_NAME = "model.properties";
 	private char bob;
 	private char wall;
