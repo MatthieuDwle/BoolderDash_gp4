@@ -4,6 +4,7 @@ import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import contract.IController;
 import contract.IModel;
 import fr.exia.showboard.BoardFrame;
+import fr.exia.showboard.IPawn;
 
 /**
  * The Class ViewFrame.
@@ -155,5 +157,16 @@ class ViewFrame extends BoardFrame implements KeyListener {
 		return this.sizeFrame;
 	}
 	
+	public void frameConfigure() {
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; x < height; y++) {
+				this.boardFrame.addSquare();
+			}
+		}
+		for (IPawn pawn : this.getModel().getLevel().getPawns()) {
+			boardFrame.addPawn(pawn);
+		}
+		boardFrame.setVisible(true);
+	}
 	
 }
