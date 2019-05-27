@@ -29,5 +29,4 @@ public class Level extends Entity{
 	public void popPawn(ActiveEntity pawn) {
 		pawns.remove(pawn);
 	}
-	
 }

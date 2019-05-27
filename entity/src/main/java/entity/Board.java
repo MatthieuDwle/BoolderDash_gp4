@@ -25,4 +25,5 @@ public class Board {
 	public void setHeight(final int height) {
 		this.height = height;
 	}
+	
 }
