@@ -10,6 +10,7 @@ public class LVLProperties extends Properties{
 	 */
 	private static final long serialVersionUID = 7399585872466234911L;
 	private static final String PROPERTIES_FILE_NAME = "model.properties";
+	
 	protected char bob;
 	protected char wall;
 	protected char enemy;
