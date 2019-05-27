@@ -27,10 +27,10 @@ public final class View implements IView, Runnable {
 	 * @param model
 	 *          the model
 	 */
-	public View(final IModel model, final int width, final int height, final int sizeFrame) {
+	public View(final IModel model, final int sizeFrame) {
 		this.viewFrame = new ViewFrame(model);
-		this.viewFrame.setWidth(width);
-		this.viewFrame.setHeight(height);
+		this.viewFrame.setWidth(model.getLevel().getBoard().getWidth());
+		this.viewFrame.setHeight(model.getLevel().getBoard().getHeight());
 		this.viewFrame.setSizeFrame(sizeFrame);
 		SwingUtilities.invokeLater(this);
 	}
@@ -69,6 +69,7 @@ public final class View implements IView, Runnable {
 		this.viewFrame.getBoardFrame().setDimension(new Dimension(this.viewFrame.getWidth(), this.viewFrame.getHeight()));
 		this.viewFrame.getBoardFrame().setDisplayFrame(new Rectangle(0, 0, this.viewFrame.getWidth(), this.viewFrame.getHeight()));
 		
+		this.viewFrame.frameConfigure();
 	}
 
 	/**
