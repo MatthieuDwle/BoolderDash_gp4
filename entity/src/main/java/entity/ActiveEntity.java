@@ -40,7 +40,17 @@ public class ActiveEntity extends GraphicEntity implements IPawn{
 	private void setPosition(Point position) {
 		this.position = position;
 	}
-	
+	 /**
+     * Sets the position.
+     *
+     * @param x
+     *            the x
+     * @param y
+     *            the y
+     */
+	  public final void setPosition(final int x, final int y) {
+	        this.position = new Point(x, y);
+	    }
 	  /*
      * (non-Javadoc)
      * @see fr.exia.showboard.IPawn#getX()
