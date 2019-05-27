@@ -6,8 +6,8 @@ public class Level extends Entity{
 	private Board board;
 	private ArrayList<ActiveEntity> pawns;
 	
-	public Level () {
-		board = new Board();
+	public Level (final int width, final int height) {
+		board = new Board(width, height);
 	}
 	
 	public Board getBoard() {
