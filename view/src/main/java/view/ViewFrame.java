@@ -14,7 +14,7 @@ import showboard.IPawn;
  *
  * @author Jean-Aymeric Diet
  */
-class ViewFrame extends BoardFrame implements KeyListener {
+class ViewFrame implements KeyListener {
 
 	/** The model. */
 	private IModel						model;
