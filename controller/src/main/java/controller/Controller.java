@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
@@ -37,8 +39,13 @@ public final class Controller implements IController {
 	 *
 	 * @see contract.IController#control()
 	 */
-	public void control() {
-		
+	public void control(int levelNumber) {
+		try {
+			this.model.loadLevel(levelNumber);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package contract;
 
+import java.io.IOException;
 import java.util.Observable;
 
 import entity.Level;
@@ -17,7 +18,7 @@ public interface IModel{
 	 */
 	Observable getObservable();
 	
-	void loadLevel();
+	void loadLevel(int levelNumber) throws IOException;
 
 	Level getLevel();
 }
