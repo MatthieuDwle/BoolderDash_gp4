@@ -9,6 +9,7 @@ public class Level extends Entity{
 	
 	public Level (final int width, final int height) {
 		board = new Board(width, height);
+		pawns = new ArrayList<>();
 	}
 	public Level() {
 		this(0,0);
