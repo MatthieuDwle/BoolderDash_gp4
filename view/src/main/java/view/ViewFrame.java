@@ -92,9 +92,6 @@ class ViewFrame extends BoardFrame implements KeyListener {
 	 * @param model
 	 *          the new model
 	 */
-	private void setModel(final IModel model) {
-		this.model = model;
-	}
 
 	/*
 	 * (non-Javadoc)
