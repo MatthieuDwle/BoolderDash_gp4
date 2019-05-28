@@ -28,7 +28,7 @@ public final class View implements IView, Runnable {
 	 *          the model
 	 */
 	public View(final IModel model, final int sizeFrame) {
-		this.viewFrame = new ViewFrame(model);
+		this.viewFrame = new ViewFrame(model, "coucou");
 		this.viewFrame.setWidth(model.getLevel().getBoard().getWidth());
 		this.viewFrame.setHeight(model.getLevel().getBoard().getHeight());
 		this.viewFrame.setSizeFrame(sizeFrame);
@@ -65,7 +65,7 @@ public final class View implements IView, Runnable {
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
-		this.viewFrame.getBoardFrame().setSize(this.viewFrame.getWidth(), this.viewFrame.getHeight());
+		this.viewFrame.getBoardFrame().setSize(this.viewFrame.getSizeFrame(), this.viewFrame.getSizeFrame());
 		this.viewFrame.getBoardFrame().setDimension(new Dimension(this.viewFrame.getWidth(), this.viewFrame.getHeight()));
 		this.viewFrame.getBoardFrame().setDisplayFrame(new Rectangle(0, 0, this.viewFrame.getWidth(), this.viewFrame.getHeight()));
 		

@@ -54,7 +54,6 @@ class ViewFrame extends BoardFrame implements KeyListener {
 	 *           the headless exception
 	 */
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
-		super(title);
 		boardFrame = new BoardFrame(title);
 	}
 
