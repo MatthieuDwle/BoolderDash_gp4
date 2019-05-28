@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 
@@ -60,10 +61,10 @@ private Level level ;
 	 *
 	 * @see contract.IModel#getLevel(java.lang.String)
 	 */
-	public void loadLevel (int levelNumber) {
+	public void loadLevel (int levelNumber) throws IOException{
 		try {
 			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(levelNumber);
+			this.setLevel(daoLevel.load(levelNumber));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
