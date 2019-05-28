@@ -17,6 +17,7 @@
 		<module>contract</module>
 		<module>model</module>
 		<module>entity</module>
+		<module>showboard</module>
 	</modules>
 	<dependencies>
 		<dependency>

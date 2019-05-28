@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import fr.exia.showboard.ISquare;
+import showboard.ISquare;
 
 public class GraphicEntity extends Entity implements ISquare{
 	

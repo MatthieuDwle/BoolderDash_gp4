@@ -5,13 +5,6 @@
     <artifactId>masterpom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>entity</artifactId>
-  <name>Entity</name>
-  <dependencies>
-  	<dependency>
-  		<groupId>jpublankproject</groupId>
-  		<artifactId>showboard</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  </dependencies>
+  <artifactId>showboard</artifactId>
+  <name>Showboard</name>
 </project>

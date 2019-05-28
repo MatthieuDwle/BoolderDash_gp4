@@ -2,7 +2,7 @@ package entity;
 
 import java.awt.Point;
 
-import fr.exia.showboard.IPawn;
+import showboard.IPawn;
 /**
  * The Class View.
  *

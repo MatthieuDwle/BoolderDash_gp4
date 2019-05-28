@@ -6,8 +6,8 @@ import java.awt.event.KeyListener;
 
 import contract.IController;
 import contract.IModel;
-import fr.exia.showboard.BoardFrame;
-import fr.exia.showboard.IPawn;
+import showboard.BoardFrame;
+import showboard.IPawn;
 
 /**
  * The Class ViewFrame.
