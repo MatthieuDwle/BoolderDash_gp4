@@ -16,6 +16,8 @@ public interface IModel{
 	 * @return the observable
 	 */
 	Observable getObservable();
+	
+	void loadLevel();
 
 	Level getLevel();
 }
