@@ -37,7 +37,7 @@ private String imageName;
 	}
 	
 	public void loadImage() throws IOException {
-		 this.setImage(ImageIO.read(new File("model\\src\\main\\resources\\images" + this.getImageName())));
+		 this.setImage(ImageIO.read(new File("/model/src/main/resources/images" + this.getImageName())));
 		
 	}
 	
