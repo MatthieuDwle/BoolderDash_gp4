@@ -37,16 +37,13 @@ public class DAOLevel extends DAOEntity<Level> {
 			
 			Level level = null;
 			final LVLProperties lvlProperties = new LVLProperties();
-			
 			ResultSet resultSetHeight = callPrepare("Height",lvlNb);
 			ResultSet resultSetWidth = callPrepare("Width",lvlNb);
 			ResultSet resultSetLevel = callPrepare("Level",lvlNb);
-			
 			if (resultSetHeight.first() && resultSetWidth.first()) {
 				
 				int width = resultSetWidth.getInt("NbColum")+2;
-				int height = resultSetHeight.getInt("NbLigne")+2;
-				
+				int height = resultSetHeight.getInt("NbLigne")+3;
 				//instantiation of level
 				
 				level = new Level(width, height);
@@ -133,7 +130,6 @@ public class DAOLevel extends DAOEntity<Level> {
 				}
 						
 			}
-			
 			return level;
 			
 		} catch (final SQLException e) {
