@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.io.IOException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -31,23 +33,18 @@ public class ModelTest {
     public void tearDown() throws Exception {
     }
 
-    @Test
-    public void testGetMessage() {
-        Assert.assertEquals("", this.model.getHelloWorld().getMessage());
-    }
-
     /**
      * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
      */
     @Test
-    public void testGetMessageString() {
-        this.model.loadHelloWorld("GB");
-        Assert.assertEquals("Hello world", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("FR");
-        Assert.assertEquals("Bonjour le monde", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("DE");
-        Assert.assertEquals("Hallo Welt", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("ID");
-        Assert.assertEquals("Salamat pagi dunia", this.model.getHelloWorld().getMessage());
+    public void testGetXindex() {
+        try {
+			this.model.loadLevel(1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Assert.assertEquals(0, this.model.getLevel().getPawns().get(0).getX());
+        
     }
 }
