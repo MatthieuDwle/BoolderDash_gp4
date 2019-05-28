@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Level extends Entity{
 	private Board board;
+	private GraphicEntity fond;
 	private ArrayList<ActiveEntity> pawns;
 	
 	public Level (final int width, final int height) {
@@ -17,10 +18,6 @@ public class Level extends Entity{
 		return this.board;
 	}
 	
-	private void setBoard(Board board) {
-		this.board = board;
-	}
-	
 	public ArrayList<ActiveEntity> getPawns(){
 		return this.pawns;
 	}
@@ -31,5 +28,11 @@ public class Level extends Entity{
 	
 	public void popPawn(ActiveEntity pawn) {
 		pawns.remove(pawn);
+	}
+	public GraphicEntity getFond() {
+		return fond;
+	}
+	public void setFond(GraphicEntity fond) {
+		this.fond = fond;
 	}
 }

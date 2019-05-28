@@ -47,7 +47,15 @@ public class DAOLevel extends DAOEntity<Level> {
 				int width = resultSetWidth.getInt("NbColum")+2;
 				int height = resultSetHeight.getInt("NbLigne")+2;
 				
+				//instantiation of level
+				
 				level = new Level(width, height);
+				
+				//instantiation of the background
+				
+				DigDirt fond = new DigDirt("Nothing.png");
+				fond.loadImage();
+				level.setFond(fond);
 				
 				int x = 0, y = 0, previous = 0;
 				
