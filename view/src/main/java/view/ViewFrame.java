@@ -160,7 +160,7 @@ class ViewFrame extends BoardFrame implements KeyListener {
 	public void frameConfigure() {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; x < height; y++) {
-				this.boardFrame.addSquare();
+				this.boardFrame.addSquare(this.getModel().getLevel().getFond(), x, y);
 			}
 		}
 		for (IPawn pawn : this.getModel().getLevel().getPawns()) {
