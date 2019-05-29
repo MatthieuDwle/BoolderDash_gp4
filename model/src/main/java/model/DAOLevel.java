@@ -52,16 +52,96 @@ public class DAOLevel extends DAOEntity<Level> {
 				fond.loadImage();
 				level.setFond(fond);
 				
-				int x = 0, y = 0, previous = 0;
+				int x, y, previous = 0;
 				
-				while(resultSetLevel.next()) {
-					
+				
+				for (y = 0; y < height; y++) {
+					for (x = 0; x < width; x++) {
+						if ((x == 0) || (x == (width - 1)) || (y == 0) || (y == (height - 1))) {
+							Wall wall = new Wall("Wall.png");
+							wall.loadImage();
+							wall.setPosition(x, y);
+							level.putPawn(wall);
+						}
+						else {
+							resultSetLevel.next();
+							char Element = resultSetLevel.getString("Element").charAt(0);
+							int Ligne = resultSetLevel.getInt("Ligne");
+							
+							
+							if (Element == lvlProperties.getWall()) {
+								Wall wall = new Wall("Wall.png");
+								wall.loadImage();
+								wall.setPosition(x, y);
+								level.putPawn(wall);
+							}
+							else if (Element == lvlProperties.getDirt()) {
+								Dirt dirt = new Dirt("Dirt.png");
+								dirt.loadImage();
+								dirt.setPosition(x, y);
+								level.putPawn(dirt);
+							}
+							else if (Element == lvlProperties.getBob()) {
+								Bob bob = new Bob("Bob1.png");
+								bob.loadImage();
+								bob.setPosition(x, y);
+								level.putPawn(bob);
+							}
+							else if (Element == lvlProperties.getCrystal()) {
+								Crystal crystal = new Crystal("Crystal.png");
+								crystal.loadImage();
+								crystal.setPosition(x, y);
+								level.putPawn(crystal);
+							}
+							else if (Element == lvlProperties.getEnemy()) {
+								Enemy enemy = new Enemy("Enemy1.png");
+								enemy.loadImage();
+								enemy.setPosition(x, y);
+								level.putPawn(enemy);
+							}
+							else if (Element == lvlProperties.getRock()) {
+								Rock rock = new Rock("Rock.png");
+								rock.loadImage();
+								rock.setPosition(x, y);
+								level.putPawn(rock);
+							}
+							else if (Element == lvlProperties.getExit()) {
+								Exit exit = new Exit("END1.png");
+								exit.loadImage();
+								exit.setPosition(x, y);
+								level.putPawn(exit);
+							}
+							else if (Element == lvlProperties.getGap()) {
+								// There is nothing to do
+							}
+							else {
+								System.out.println("Caractère inconnue");
+							}
+						}
+					}
+				}
+			}
+				return level;
+			} catch (final SQLException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				/*while(true) {
+					System.out.println(y);
 					char Element = resultSetLevel.getString("Element").charAt(0);
 					int Ligne = resultSetLevel.getInt("Ligne");
 
-					if(previous != Ligne) { y++; previous = Ligne;}
-					
-					
+					if(previous != Ligne) {x=1; y++; previous = Ligne;}
 					
 					
 					if ((x == 0) || (x == (width - 1)) || (y == 0) || (y == (height - 1))) {
@@ -134,7 +214,7 @@ public class DAOLevel extends DAOEntity<Level> {
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 	
 	private ResultSet callPrepare(String type, int lvlNb) {
 		try {
