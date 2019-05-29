@@ -27,7 +27,8 @@ class ViewFrame implements KeyListener {
 	/** The height. */
 	private int height;
 	/** The size of the frame. */
-	private int sizeFrame;
+	private int sizeFrameWidth;
+	private int sizeFrameHeight;
 	BoardFrame boardFrame;
 	
 	/**
@@ -142,19 +143,17 @@ class ViewFrame implements KeyListener {
 		return this.height;
 	}
 	
-	protected void setSizeFrame(final int sizeFrame) {
-		this.sizeFrame = sizeFrame;
+	protected void setSizeFrame() {
+		this.sizeFrameWidth = width*16*3;
+		this.sizeFrameHeight = height*16*3;
 	}
 	
-	public int getSizeFrame() {
-		return this.sizeFrame;
-	}
 	
 	public void frameConfigure() {
 		this.boardFrame = new BoardFrame("Boulderdash");
 	    this.boardFrame.setDimension(new Dimension(width, height));
 	    this.boardFrame.setDisplayFrame(new Rectangle(0,0,width,height));
-	    this.boardFrame.setSize(12000, 700);
+	    this.boardFrame.setSize(sizeFrameWidth, sizeFrameHeight);
 	    
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {

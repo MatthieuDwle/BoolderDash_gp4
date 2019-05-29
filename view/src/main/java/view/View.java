@@ -25,11 +25,11 @@ public final class View implements IView, Runnable {
 	 * @param model
 	 *          the model
 	 */
-	public View(final IModel model, final int sizeFrame) {
+	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model, "coucou");
 		this.viewFrame.setWidth(model.getLevel().getBoard().getWidth());
 		this.viewFrame.setHeight(model.getLevel().getBoard().getHeight());
-		this.viewFrame.setSizeFrame(sizeFrame);
+		this.viewFrame.setSizeFrame();
 		SwingUtilities.invokeLater(this);
 	}
 

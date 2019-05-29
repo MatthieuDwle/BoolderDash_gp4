@@ -37,7 +37,7 @@ public final class Controller implements IController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.view = new View(model, 1000);
+		this.view = new View(model);
 	}
 
 	/**
