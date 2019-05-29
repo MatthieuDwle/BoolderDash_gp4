@@ -7,7 +7,7 @@ public class Rock extends ActiveEntity implements IMovable{
 		// TODO Auto-generated constructor stub
 	}
 	@Override
-	public void move(int direction) {
+	public void move() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -102,7 +102,6 @@ class ViewFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	public void keyTyped(final KeyEvent e) {
-
 	}
 
 	/*
@@ -164,6 +163,7 @@ class ViewFrame implements KeyListener {
 			boardFrame.addPawn(pawn);
 		}
 		model.getObservable().addObserver(boardFrame.getObserver());
+		this.boardFrame.addKeyListener(this);
 	}
 	
 }

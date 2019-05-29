@@ -42,13 +42,13 @@ public final class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_Z:
+			case KeyEvent.VK_UP:
 				return ControllerOrder.UP;
-			case KeyEvent.VK_S:
+			case KeyEvent.VK_DOWN:
 				return ControllerOrder.DOWN;
-			case KeyEvent.VK_D:
+			case KeyEvent.VK_RIGHT:
 				return ControllerOrder.RIGHT;
-			case KeyEvent.VK_Q:
+			case KeyEvent.VK_LEFT:
 				return ControllerOrder.LEFT;
 			default:
 				return null;
@@ -76,4 +76,5 @@ public final class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
+
 }

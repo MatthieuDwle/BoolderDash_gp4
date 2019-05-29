@@ -5,7 +5,10 @@ import java.io.IOException;
 
 import contract.ControllerOrder;
 import contract.IController;
+import entity.ActiveEntity;
+import entity.Bob;
 import model.Model;
+import showboard.IPawn;
 import view.View;
 
 /**
@@ -38,6 +41,7 @@ public final class Controller implements IController {
 			e.printStackTrace();
 		}
 		this.view = new View(model);
+		view.setController(this);
 	}
 
 	/**
@@ -64,7 +68,28 @@ public final class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
-		
+			for (ActiveEntity pawn : this.model.getLevel().getPawns()) {
+			if (pawn instanceof Bob) {
+				switch (controllerOrder) {
+				case UP:
+					((Bob) pawn).moveUp();
+				break;
+				case DOWN:
+					((Bob) pawn).moveDown();
+				break;
+				case RIGHT:
+					((Bob) pawn).moveRight();
+				break;
+				case LEFT:
+					((Bob) pawn).moveLeft();
+				break;
+				}
+				
+				model.note();
+			}
+			
+			}
+					
+		}
 	}
 
-}

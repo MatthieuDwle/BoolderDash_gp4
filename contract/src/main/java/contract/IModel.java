@@ -21,4 +21,6 @@ public interface IModel{
 	void loadLevel(int levelNumber) throws IOException;
 
 	Level getLevel();
+
+	void note();
 }

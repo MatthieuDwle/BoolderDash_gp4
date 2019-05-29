@@ -84,5 +84,12 @@ private Level level ;
 	public Observable getObservable() {
 		return this;
 	}
+
+	@Override
+	public void note() {
+		// TODO Auto-generated method stub
+		this.setChanged();
+		this.notifyObservers();
+	}
 	
 }

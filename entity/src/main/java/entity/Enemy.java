@@ -10,7 +10,7 @@ public class Enemy extends ActiveEntity implements IPop,IMovable{
 		// TODO Auto-generated constructor stub
 	}
 	@Override
-	public void move(int direction) {
+	public void move() {
 		// TODO Auto-generated method stub
 		
 	}
