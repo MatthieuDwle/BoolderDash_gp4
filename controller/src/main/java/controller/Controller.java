@@ -37,7 +37,7 @@ public final class Controller implements IController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.view = new View(model, 600);
+		this.view = new View(model, 1000);
 	}
 
 	/**
@@ -49,12 +49,6 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control(int levelNumber) {
-		/*try {
-			this.model.loadLevel(levelNumber);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 	}
 
 

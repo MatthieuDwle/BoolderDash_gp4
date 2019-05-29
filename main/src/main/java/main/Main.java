@@ -24,13 +24,6 @@ public abstract class Main {
      */
 	
     public static void main(final String[] args) throws IOException {
-        /*final Model model = new Model();
-        model.loadLevel(1);
-        final View view = new View(model, 500);
-        final Controller controller = new Controller(view, model);
-        view.setController(controller);
-        controller.control(1);*/
-    	
     	final Controller controller = new Controller();
     	controller.control(1);
     }

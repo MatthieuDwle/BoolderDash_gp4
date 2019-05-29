@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.SwingUtilities;
@@ -64,10 +62,8 @@ public final class View implements IView, Runnable {
 	 *
 	 * @see java.lang.Runnable#run()
 	 */
+	@Override
 	public void run() {
-		this.viewFrame.setSize(this.viewFrame.getSizeFrame(), this.viewFrame.getSizeFrame());
-		this.viewFrame.setDimension(new Dimension(this.viewFrame.getWidth(), this.viewFrame.getHeight()));
-		this.viewFrame.setDisplayFrame(new Rectangle(0, 0, this.viewFrame.getWidth(), this.viewFrame.getHeight()));
 		this.viewFrame.frameConfigure();
 	}
 

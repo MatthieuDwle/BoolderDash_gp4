@@ -21,6 +21,7 @@ private Level level ;
 	 * Instantiates a new model.
 	 */
 	public Model() {
+		super();
 		//this.level = new Level();
 	}
 
@@ -83,4 +84,5 @@ private Level level ;
 	public Observable getObservable() {
 		return this;
 	}
+	
 }

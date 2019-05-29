@@ -1,6 +1,8 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -14,21 +16,19 @@ import showboard.IPawn;
  *
  * @author Jean-Aymeric Diet
  */
-class ViewFrame extends BoardFrame implements KeyListener {
+class ViewFrame implements KeyListener {
 
 	/** The model. */
-	private IModel						model;
+	private IModel model;
 	/** The controller. */
-	private IController				controller;
-	/** The Constant serialVersionUID. */
-	private static final long	serialVersionUID	= -697358409737458175L;
+	private IController	controller;
 	/** The width. */
 	private int width;
 	/** The height. */
 	private int height;
 	/** The size of the frame. */
 	private int sizeFrame;
-	
+	BoardFrame boardFrame;
 	
 	/**
 	 * Instantiates a new view frame.
@@ -53,7 +53,7 @@ class ViewFrame extends BoardFrame implements KeyListener {
 	 *           the headless exception
 	 */
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
-		super(title);
+		
 		this.setModel(model);
 	}
 
@@ -122,9 +122,9 @@ class ViewFrame extends BoardFrame implements KeyListener {
 
 	}
 	
-	/*public BoardFrame getBoardFrame() {
+	public BoardFrame getBoardFrame() {
 		return this.boardFrame;
-	}*/
+	}
 	
 	protected void setWidth(final int width) {
 		this.width = width;
@@ -151,15 +151,20 @@ class ViewFrame extends BoardFrame implements KeyListener {
 	}
 	
 	public void frameConfigure() {
+		this.boardFrame = new BoardFrame("Boulderdash");
+	    this.boardFrame.setDimension(new Dimension(width, height));
+	    this.boardFrame.setDisplayFrame(new Rectangle(0,0,width,height));
+	    this.boardFrame.setSize(12000, 700);
+	    
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				this.addSquare(this.model.getLevel().getFond(), x, y);
+				boardFrame.addSquare(this.model.getLevel().getFond(), x, y);
 			}
 		}
 		for (IPawn pawn : this.model.getLevel().getPawns()) {
-			this.addPawn(pawn);
+			boardFrame.addPawn(pawn);
 		}
-		this.setVisible(true);
+		model.getObservable().addObserver(boardFrame.getObserver());
 	}
 	
 }

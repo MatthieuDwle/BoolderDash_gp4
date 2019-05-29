@@ -1,7 +1,6 @@
 package entity;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -37,7 +36,7 @@ private String imageName;
 	}
 	
 	public void loadImage() throws IOException {
-		 this.setImage(ImageIO.read(getClass().getResource("/images/" + this.getImageName())));
+		 this.setImage(ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("images/" + this.getImageName())));
 		
 	}
 	
