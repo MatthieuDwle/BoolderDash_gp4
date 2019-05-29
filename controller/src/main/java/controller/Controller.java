@@ -2,10 +2,11 @@ package controller;
 
 import java.io.IOException;
 
+
 import contract.ControllerOrder;
 import contract.IController;
-import contract.IModel;
-import contract.IView;
+import model.Model;
+import view.View;
 
 /**
  * The Class Controller.
@@ -13,10 +14,10 @@ import contract.IView;
 public final class Controller implements IController {
 
 	/** The view. */
-	private IView	view;
+	private View	view;
 
 	/** The model. */
-	private IModel	model;
+	private Model	model;
 
 	/**
 	 * Instantiates a new controller.
@@ -26,9 +27,17 @@ public final class Controller implements IController {
 	 * @param model
 	 *          the model
 	 */
-	public Controller(final IView view, final IModel model) {
-		this.setView(view);
-		this.setModel(model);
+	public Controller() {
+		/*this.setView(view);
+		this.setModel(model);*/
+		this.model = new Model();
+		try {
+			model.loadLevel(1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.view = new View(model, 600);
 	}
 
 	/**
@@ -40,33 +49,14 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control(int levelNumber) {
-		try {
+		/*try {
 			this.model.loadLevel(levelNumber);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
-	/**
-     * Sets the view.
-     *
-     * @param pview
-     *            the new view
-     */
-	private void setView(final IView pview) {
-		this.view = pview;
-	}
-
-	/**
-	 * Sets the model.
-	 *
-	 * @param model
-	 *          the new model
-	 */
-	private void setModel(final IModel model) {
-		this.model = model;
-	}
 
 	/**
      * Order perform.

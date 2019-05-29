@@ -21,7 +21,7 @@ private Level level ;
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.level = new Level();
+		//this.level = new Level();
 	}
 
 	/**

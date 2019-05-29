@@ -34,7 +34,6 @@ public class DAOLevel extends DAOEntity<Level> {
 	
 	public Level load(final int lvlNb) throws IOException {
 		try {
-			
 			Level level = null;
 			final LVLProperties lvlProperties = new LVLProperties();
 			ResultSet resultSetHeight = callPrepare("Height",lvlNb);
@@ -45,7 +44,6 @@ public class DAOLevel extends DAOEntity<Level> {
 				int width = resultSetWidth.getInt("NbColum")+2;
 				int height = resultSetHeight.getInt("NbLigne")+3;
 				//instantiation of level
-				
 				level = new Level(width, height);
 				
 				//instantiation of the background

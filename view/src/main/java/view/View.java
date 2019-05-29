@@ -65,10 +65,9 @@ public final class View implements IView, Runnable {
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
-		this.viewFrame.getBoardFrame().setSize(this.viewFrame.getSizeFrame(), this.viewFrame.getSizeFrame());
-		this.viewFrame.getBoardFrame().setDimension(new Dimension(this.viewFrame.getWidth(), this.viewFrame.getHeight()));
-		this.viewFrame.getBoardFrame().setDisplayFrame(new Rectangle(0, 0, this.viewFrame.getWidth(), this.viewFrame.getHeight()));
-		
+		this.viewFrame.setSize(this.viewFrame.getSizeFrame(), this.viewFrame.getSizeFrame());
+		this.viewFrame.setDimension(new Dimension(this.viewFrame.getWidth(), this.viewFrame.getHeight()));
+		this.viewFrame.setDisplayFrame(new Rectangle(0, 0, this.viewFrame.getWidth(), this.viewFrame.getHeight()));
 		this.viewFrame.frameConfigure();
 	}
 

@@ -14,7 +14,7 @@ import showboard.IPawn;
  *
  * @author Jean-Aymeric Diet
  */
-class ViewFrame implements KeyListener {
+class ViewFrame extends BoardFrame implements KeyListener {
 
 	/** The model. */
 	private IModel						model;
@@ -29,7 +29,6 @@ class ViewFrame implements KeyListener {
 	/** The size of the frame. */
 	private int sizeFrame;
 	
-	private BoardFrame boardFrame;
 	
 	/**
 	 * Instantiates a new view frame.
@@ -54,7 +53,8 @@ class ViewFrame implements KeyListener {
 	 *           the headless exception
 	 */
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
-		boardFrame = new BoardFrame(title);
+		super(title);
+		this.setModel(model);
 	}
 
 	/**
@@ -84,14 +84,17 @@ class ViewFrame implements KeyListener {
 	protected IModel getModel() {
 		return this.model;
 	}
-
+	
 	/**
 	 * Sets the model.
 	 *
 	 * @param model
 	 *          the new model
 	 */
-
+	
+	private void setModel(IModel model) {
+		this.model = model;
+	}
 	/*
 	 * (non-Javadoc)
 	 *
@@ -119,9 +122,10 @@ class ViewFrame implements KeyListener {
 
 	}
 	
-	public BoardFrame getBoardFrame() {
+	/*public BoardFrame getBoardFrame() {
 		return this.boardFrame;
-	}
+	}*/
+	
 	protected void setWidth(final int width) {
 		this.width = width;
 	}
@@ -148,14 +152,14 @@ class ViewFrame implements KeyListener {
 	
 	public void frameConfigure() {
 		for (int x = 0; x < width; x++) {
-			for (int y = 0; x < height; y++) {
-				this.boardFrame.addSquare(this.getModel().getLevel().getFond(), x, y);
+			for (int y = 0; y < height; y++) {
+				this.addSquare(this.model.getLevel().getFond(), x, y);
 			}
 		}
-		for (IPawn pawn : this.getModel().getLevel().getPawns()) {
-			boardFrame.addPawn(pawn);
+		for (IPawn pawn : this.model.getLevel().getPawns()) {
+			this.addPawn(pawn);
 		}
-		boardFrame.setVisible(true);
+		this.setVisible(true);
 	}
 	
 }
