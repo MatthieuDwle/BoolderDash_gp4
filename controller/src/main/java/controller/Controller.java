@@ -1,12 +1,16 @@
 package controller;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import contract.ControllerOrder;
 import contract.IController;
 import entity.ActiveEntity;
 import entity.Bob;
+import entity.Dirt;
+import entity.Rock;
+import entity.Wall;
 import model.Model;
 import view.View;
 
@@ -67,28 +71,72 @@ public final class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		ActiveEntity bob = null;
 			for (ActiveEntity pawn : this.model.getLevel().getPawns()) {
-			if (pawn instanceof Bob) {
-				switch (controllerOrder) {
-				case UP:
-					((Bob) pawn).moveUp();
-				break;
-				case DOWN:
-					((Bob) pawn).moveDown();
-				break;
-				case RIGHT:
-					((Bob) pawn).moveRight();
-				break;
-				case LEFT:
-					((Bob) pawn).moveLeft();
-				break;
-				}
-				
-				model.note();
-			}
-			
-			}
+				if (pawn instanceof Bob) {
+					bob = pawn;
 					
+				}
+			}
+			switch (controllerOrder) {
+			case UP:
+				((Bob) bob).moveUp(this.testFront(bob, controllerOrder));
+			break;
+			case DOWN:
+				((Bob) bob).moveDown(this.testFront(bob, controllerOrder));
+			break;
+			case RIGHT:
+				((Bob) bob).moveRight(this.testFront(bob, controllerOrder));
+			break;
+			case LEFT:
+				((Bob) bob).moveLeft(this.testFront(bob, controllerOrder));
+			break;
+			}
+			model.note();
 		}
+	
+	private boolean testFront(ActiveEntity bob, final ControllerOrder controllerOrder) {
+		ActiveEntity element = null;
+		boolean canMove = false;
+		for (ActiveEntity pawn : this.model.getLevel().getPawns()){
+			switch (controllerOrder) {
+			case UP:
+				if (pawn.getX() == bob.getX() && pawn.getY() == bob.getY()-1) {
+					element = pawn;
+					canMove = true;
+				}
+			break;
+			case DOWN:
+				if (pawn.getX() == bob.getX() && pawn.getY() == bob.getY()+1) {
+					element = pawn;
+					canMove = true;
+				}
+			break;
+			case RIGHT:
+				if (pawn.getX() == bob.getX()+1 && pawn.getY() == bob.getY()) {
+					element = pawn;
+					canMove = true;
+				}
+			break;
+			case LEFT:
+				if (pawn.getX() == bob.getX()-1 && pawn.getY() == bob.getY()) {
+					element = pawn;	
+				}
+			break;
+			}
+		}
+		if (element instanceof Dirt) {
+			System.out.print("cc");
+			canMove = true;
+			this.model.getLevel().popPawn(element);
+		}
+		else if (element instanceof Wall || element instanceof Rock) {
+			canMove = false;
+		}
+		else {
+			canMove = true;
+		}
+		return canMove;
+		
 	}
-
+}
