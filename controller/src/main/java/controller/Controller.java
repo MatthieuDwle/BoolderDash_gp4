@@ -8,6 +8,7 @@ import contract.ControllerOrder;
 import contract.IController;
 import entity.ActiveEntity;
 import entity.Bob;
+import entity.Crystal;
 import entity.Dirt;
 import entity.Rock;
 import entity.Wall;
@@ -126,9 +127,14 @@ public final class Controller implements IController {
 			}
 		}
 		if (element instanceof Dirt) {
-			System.out.print("cc");
+			canMove = true;
+			element.setImage(null);
+			this.model.getLevel().popPawn(element);
+		}
+		else if(element instanceof Crystal) {
 			canMove = true;
 			this.model.getLevel().popPawn(element);
+			((Bob) element).addCrystal();
 		}
 		else if (element instanceof Wall || element instanceof Rock) {
 			canMove = false;

@@ -44,7 +44,7 @@ private int crystalCount = 10;
 	/*	Level.popPawn();*/
 	}
 	public void addCrystal() {
-		
+		System.out.println("coucou");
 		this.crystalCount++;
 		/*if(this.crystalCount != 10) {this.canWin = false;}*/
 	
