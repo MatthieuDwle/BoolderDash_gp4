@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public class Exit extends ActiveEntity {
 	

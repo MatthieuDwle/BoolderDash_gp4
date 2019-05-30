@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public class Crystal extends ActiveEntity implements IPop,IMovable{
 
