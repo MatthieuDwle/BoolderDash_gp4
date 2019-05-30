@@ -52,7 +52,7 @@ public class DAOLevel extends DAOEntity<Level> {
 				fond.loadImage();
 				level.setFond(fond);
 				
-				int x, y, previous = 0;
+				int x, y;
 				
 				
 				for (y = 0; y < height; y++) {

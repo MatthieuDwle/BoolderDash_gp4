@@ -13,5 +13,5 @@ public Exit(String imageName) {
 
 	}
 	
- //Des qu'il traverse le programme se quitte et il a gagner 
+
 
