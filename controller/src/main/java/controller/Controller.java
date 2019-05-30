@@ -1,15 +1,18 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Random;
 
 import contract.ControllerOrder;
 import contract.IController;
 import entity.ActiveEntity;
+import entity.Board;
 import entity.Bob;
 import entity.Crystal;
 import entity.Dirt;
 import entity.Enemy;
 import entity.Exit;
+import entity.Level;
 import entity.Rock;
 import entity.Wall;
 import model.Model;
@@ -26,7 +29,10 @@ public final class Controller implements IController {
 	/** The model. */
 	private Model	model;
 	
+	
 	private int crystal = 15;
+	 private static final int       timeLoop            = 300;
+	
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -98,37 +104,37 @@ public final class Controller implements IController {
 			model.note();
 		}
 	
-	private boolean testFront(ActiveEntity bob, final ControllerOrder controllerOrder) {
+	private boolean testFront(ActiveEntity mob, final ControllerOrder controllerOrder) {
 		ActiveEntity element = null;
 		boolean canMove = false;
 		for (ActiveEntity pawn : this.model.getLevel().getPawns()){
 			switch (controllerOrder) {
 			case UP:
-				if (pawn.getX() == bob.getX() && pawn.getY() == bob.getY()-1) {
+				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY()-1) {
 					element = pawn;
 					canMove = true;
 				}
 			break;
 			case DOWN:
-				if (pawn.getX() == bob.getX() && pawn.getY() == bob.getY()+1) {
+				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY()+1) {
 					element = pawn;
 					canMove = true;
 				}
 			break;
 			case RIGHT:
-				if (pawn.getX() == bob.getX()+1 && pawn.getY() == bob.getY()) {
+				if (pawn.getX() == mob.getX()+1 && pawn.getY() == mob.getY()) {
 					element = pawn;
 					canMove = true;
 				}
 			break;
 			case LEFT:
-				if (pawn.getX() == bob.getX()-1 && pawn.getY() == bob.getY()) {
+				if (pawn.getX() == mob.getX()-1 && pawn.getY() == mob.getY()) {
 					element = pawn;	
 				}
 			break;
 			}
 		}
-		if (element instanceof Dirt) {
+		if (element instanceof Dirt && mob instanceof Bob) {
 			canMove = true;
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
@@ -137,16 +143,16 @@ public final class Controller implements IController {
 			canMove = true;
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
-			((Bob) bob).addCrystal(crystal);
+			((Bob) mob).addCrystal(crystal);
 		}
 		else if (element instanceof Wall || element instanceof Rock) {
 			canMove = false;
 		}
-		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() < crystal ) {
+		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() < crystal ) {
 			canMove = false;
 			
 		}
-		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() >= crystal ) {
+		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() >= crystal ) {
 			canMove = true;
 			this.view.win();
 			System.exit(0);
@@ -168,4 +174,37 @@ public final class Controller implements IController {
 		return canMove;
 		
 	}
-}
+    public final void move(ControllerOrder controllerOrder) throws InterruptedException {
+    	final Random random = new Random();
+    
+        for (;;) {
+        	
+            for (final ActiveEntity pawn : this.model.getLevel().getPawns()) {
+            	switch (random.nextInt()%4) {	
+            	case 1:
+            		
+            		controllerOrder = ControllerOrder.UP;
+    				((Enemy) pawn).moveUp(this.testFront(pawn, controllerOrder));
+    			break;
+    			case 2:
+    				controllerOrder = ControllerOrder.DOWN;
+    				((Enemy) pawn).moveDown(this.testFront(pawn, controllerOrder));
+    			break;
+    			case 3:
+    				controllerOrder = ControllerOrder.RIGHT;
+    				((Enemy) pawn).moveRight(this.testFront(pawn, controllerOrder));
+    			break;
+    			case 4:
+    				controllerOrder = ControllerOrder.LEFT;
+    				((Enemy) pawn).moveLeft(this.testFront(pawn, controllerOrder));
+    			break;            	
+            	}
+            	}       
+            model.note();
+            Thread.sleep(timeLoop);
+            }         
+        }
+    }
+
+
+
