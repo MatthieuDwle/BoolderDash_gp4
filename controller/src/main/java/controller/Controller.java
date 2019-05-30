@@ -26,7 +26,8 @@ public final class Controller implements IController {
 
 	/** The model. */
 	private Model	model;
-
+	
+	private int crystal = 15;
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -46,6 +47,7 @@ public final class Controller implements IController {
 			e.printStackTrace();
 		}
 		this.view = new View(model);
+		this.view.startPopup(crystal);
 		view.setController(this);
 	}
 
@@ -136,17 +138,18 @@ public final class Controller implements IController {
 			canMove = true;
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
-			((Bob) bob).addCrystal();
+			((Bob) bob).addCrystal(crystal);
 		}
 		else if (element instanceof Wall || element instanceof Rock) {
 			canMove = false;
 		}
-		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() < 5 ) {
+		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() < crystal ) {
 			canMove = false;
 			
 		}
-		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() >= 5 ) {
+		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() >= crystal ) {
 			canMove = true;
+			this.view.win();
 			System.exit(0);
 		}
 		

@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
@@ -75,6 +76,14 @@ public final class View implements IView, Runnable {
 	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
+	}
+	
+	public void startPopup(int crystal){
+		JOptionPane.showMessageDialog(null, "CATCH " + crystal + " CRYSTAL TO ESCAPE !" );
+	}
+	
+	public void win() {
+		JOptionPane.showMessageDialog(null, "YOU WIN !!!");
 	}
 
 }

@@ -2,6 +2,8 @@ package entity;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 
 
@@ -41,16 +43,11 @@ public boolean End;
 	}
 	
 
-	public void addCrystal() {
+	public void addCrystal(int crystal) {
 		this.crystalCount++;
 		System.out.println(crystalCount);
-		if (this.crystalCount >= 5) {
-			System.out.println("You Win escape now !");
-			
-		
-		
-			
-	
+		if (this.crystalCount == crystal) {
+			JOptionPane.showMessageDialog(null, "YOU HAVE ENOUGH CRYSTALS");
 		}
 	
 	}
