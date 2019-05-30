@@ -10,6 +10,7 @@ import entity.ActiveEntity;
 import entity.Bob;
 import entity.Crystal;
 import entity.Dirt;
+import entity.Exit;
 import entity.Rock;
 import entity.Wall;
 import model.Model;
@@ -140,6 +141,15 @@ public final class Controller implements IController {
 		else if (element instanceof Wall || element instanceof Rock) {
 			canMove = false;
 		}
+		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() < 5 ) {
+			canMove = false;
+			
+		}
+		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() >= 5 ) {
+			canMove = true;
+			System.exit(0);
+		}
+		
 		else {
 			canMove = true;
 		}

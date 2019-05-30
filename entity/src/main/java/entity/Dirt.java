@@ -7,11 +7,7 @@ public class Dirt extends ActiveEntity implements IPop{
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public void pop() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 
 }

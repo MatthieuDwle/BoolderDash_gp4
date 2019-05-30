@@ -11,10 +11,4 @@ public class Crystal extends ActiveEntity implements IPop,IMovable{
 		// TODO Auto-generated method stub
 		
 		}
-	
-	@Override
-	public void pop() {
-		// TODO Auto-generated method stub
-		
-	}
 }
