@@ -133,8 +133,9 @@ public final class Controller implements IController {
 		}
 		else if(element instanceof Crystal) {
 			canMove = true;
+			element.setImage(null);
 			this.model.getLevel().popPawn(element);
-			((Bob) element).addCrystal();
+			((Bob) bob).addCrystal();
 		}
 		else if (element instanceof Wall || element instanceof Rock) {
 			canMove = false;

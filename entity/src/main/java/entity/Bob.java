@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 public class Bob extends ActiveEntity implements IPop{
-private int crystalCount = 10;
+private int crystalCount = 0;
 
 	public Bob(String imageName) {
 		super(imageName);
@@ -44,8 +44,8 @@ private int crystalCount = 10;
 	/*	Level.popPawn();*/
 	}
 	public void addCrystal() {
-		System.out.println("coucou");
 		this.crystalCount++;
+		System.out.println(crystalCount);
 		/*if(this.crystalCount != 10) {this.canWin = false;}*/
 	
 	}
