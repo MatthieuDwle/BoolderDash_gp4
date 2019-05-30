@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import contract.ControllerOrder;
 import contract.IController;
@@ -10,6 +8,7 @@ import entity.ActiveEntity;
 import entity.Bob;
 import entity.Crystal;
 import entity.Dirt;
+import entity.Enemy;
 import entity.Exit;
 import entity.Rock;
 import entity.Wall;
@@ -150,6 +149,16 @@ public final class Controller implements IController {
 		else if (element instanceof Exit && ((Bob) bob).getCrystalCount() >= crystal ) {
 			canMove = true;
 			this.view.win();
+			System.exit(0);
+		}
+		
+		else if (element instanceof Enemy) {
+			canMove = true;
+			this.view.lose();
+			element.setImage(null);
+			this.model.getLevel().popPawn(element);
+			bob.setImage(null);
+			this.model.getLevel().popPawn(bob);
 			System.exit(0);
 		}
 		

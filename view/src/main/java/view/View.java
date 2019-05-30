@@ -85,5 +85,9 @@ public final class View implements IView, Runnable {
 	public void win() {
 		JOptionPane.showMessageDialog(null, "YOU WIN !!!");
 	}
+	
+	public void lose() {
+		JOptionPane.showMessageDialog(null, "YOU LOSE....");
+	}
 
 }
