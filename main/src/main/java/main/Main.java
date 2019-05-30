@@ -21,9 +21,10 @@ public abstract class Main {
      * @param args
      *            the arguments
      * @throws IOException 
+     * @throws InterruptedException 
      */
 	
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException, InterruptedException {
     	final Controller controller = new Controller();
     	controller.control(1);
     }

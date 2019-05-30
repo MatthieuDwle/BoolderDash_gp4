@@ -40,31 +40,19 @@ public final class Controller implements IController {
 	 *          the view
 	 * @param model
 	 *          the model
+	 * @throws InterruptedException 
 	 */
-	public Controller() {
-		/*this.setView(view);
-		this.setModel(model);*/
+	public Controller() throws InterruptedException {
 		this.model = new Model();
 		try {
 			model.loadLevel(1);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.view = new View(model);
 		this.view.startPopup(crystal);
 		view.setController(this);
-	}
-
-	/**
-     * Control.
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#control()
-	 */
-	public void control(int levelNumber) {
+		this.move();
 	}
 
 
@@ -84,7 +72,6 @@ public final class Controller implements IController {
 			for (ActiveEntity pawn : this.model.getLevel().getPawns()) {
 				if (pawn instanceof Bob) {
 					bob = pawn;
-					
 				}
 			}
 			switch (controllerOrder) {
@@ -139,6 +126,9 @@ public final class Controller implements IController {
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
 		}
+		else if (element instanceof Dirt && mob instanceof Enemy) {
+			canMove = false;
+		}
 		else if(element instanceof Crystal) {
 			canMove = true;
 			element.setImage(null);
@@ -163,8 +153,8 @@ public final class Controller implements IController {
 			this.view.lose();
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
-			bob.setImage(null);
-			this.model.getLevel().popPawn(bob);
+			mob.setImage(null);
+			this.model.getLevel().popPawn(mob);
 			System.exit(0);
 		}
 		
@@ -174,15 +164,14 @@ public final class Controller implements IController {
 		return canMove;
 		
 	}
-    public final void move(ControllerOrder controllerOrder) throws InterruptedException {
+    public final void move() throws InterruptedException {
     	final Random random = new Random();
-    
+    	ControllerOrder controllerOrder;
         for (;;) {
-        	
             for (final ActiveEntity pawn : this.model.getLevel().getPawns()) {
-            	switch (random.nextInt()%4) {	
+            	if(pawn instanceof Enemy) {
+            		switch (random.nextInt()%4) {	
             	case 1:
-            		
             		controllerOrder = ControllerOrder.UP;
     				((Enemy) pawn).moveUp(this.testFront(pawn, controllerOrder));
     			break;
@@ -199,11 +188,19 @@ public final class Controller implements IController {
     				((Enemy) pawn).moveLeft(this.testFront(pawn, controllerOrder));
     			break;            	
             	}
+            	}
             	}       
             model.note();
             Thread.sleep(timeLoop);
             }         
         }
+
+
+	@Override
+	public void control(int levelNumber) {
+		// TODO Auto-generated method stub
+		
+	}
     }
 
 
