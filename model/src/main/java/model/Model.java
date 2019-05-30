@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
-import entity.Level;
+
 
 
 /**
@@ -85,11 +85,11 @@ private Level level ;
 		return this;
 	}
 
-	@Override
+/*	@Override
 	public void note() {
 		// TODO Auto-generated method stub
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
+	*/
 }

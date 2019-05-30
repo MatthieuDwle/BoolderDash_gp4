@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Dirt extends ActiveEntity implements IPop{
 

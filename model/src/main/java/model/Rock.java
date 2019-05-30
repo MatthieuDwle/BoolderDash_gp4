@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Rock extends ActiveEntity implements IMovable{
 

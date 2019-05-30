@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Wall extends ActiveEntity {
 

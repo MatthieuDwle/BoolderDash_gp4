@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import contract.ControllerOrder;
 import contract.IController;
-import entity.ActiveEntity;
-import entity.Bob;
+import model.ActiveEntity;
+import model.Bob;
 import model.Model;
 import showboard.IPawn;
 import view.View;
@@ -85,7 +85,7 @@ public final class Controller implements IController {
 				break;
 				}
 				
-				model.note();
+				//model.note();
 			}
 			
 			}

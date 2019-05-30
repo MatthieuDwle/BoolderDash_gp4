@@ -3,7 +3,7 @@ package contract;
 import java.io.IOException;
 import java.util.Observable;
 
-import entity.Level;
+import model.Level;
 
 /**
  * The Interface IModel.
@@ -22,5 +22,5 @@ public interface IModel{
 
 	Level getLevel();
 
-	void note();
+	//void note();
 }
