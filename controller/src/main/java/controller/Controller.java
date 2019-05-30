@@ -8,7 +8,6 @@ import contract.IController;
 import entity.ActiveEntity;
 import entity.Bob;
 import model.Model;
-import showboard.IPawn;
 import view.View;
 
 /**
