@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Random;
 
-public class Enemy extends ActiveEntity implements IPop,IMovable{
+public class Enemy extends ActiveEntity implements IPop{
 
 	
 	public Enemy(String imageName) {
@@ -39,16 +39,5 @@ public class Enemy extends ActiveEntity implements IPop,IMovable{
 			if (test == true) {
 				this.setPosition(this.getX()-1, this.getY());
 			}
-		}
-
-
-		@Override
-		public void move() {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-	
-	
+		}	
 }

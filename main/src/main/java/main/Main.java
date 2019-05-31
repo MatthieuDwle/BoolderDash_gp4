@@ -26,6 +26,5 @@ public abstract class Main {
 	
     public static void main(final String[] args) throws IOException, InterruptedException {
     	final Controller controller = new Controller();
-    	controller.control(1);
     }
 }

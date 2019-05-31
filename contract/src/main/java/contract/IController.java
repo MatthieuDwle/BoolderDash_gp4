@@ -8,11 +8,6 @@ package contract;
 public interface IController {
 
 	/**
-	 * Control.
-	 */
-	public void control(int levelNumber);
-
-	/**
 	 * Order perform.
 	 *
 	 * @param controllerOrder

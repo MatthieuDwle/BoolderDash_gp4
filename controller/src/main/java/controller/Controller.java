@@ -6,13 +6,12 @@ import java.util.Random;
 import contract.ControllerOrder;
 import contract.IController;
 import entity.ActiveEntity;
-import entity.Board;
 import entity.Bob;
 import entity.Crystal;
 import entity.Dirt;
 import entity.Enemy;
 import entity.Exit;
-import entity.Level;
+import entity.IMovable;
 import entity.Rock;
 import entity.Wall;
 import model.Model;
@@ -29,9 +28,9 @@ public final class Controller implements IController {
 	/** The model. */
 	private Model	model;
 	
-	
+	private IMovable move;
 	private int crystal = 15;
-	 private static final int       timeLoop            = 300;
+	private static final int       timeLoop            = 300;
 	
 	/**
 	 * Instantiates a new controller.
@@ -99,19 +98,16 @@ public final class Controller implements IController {
 			case UP:
 				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY()-1) {
 					element = pawn;
-					canMove = true;
 				}
 			break;
 			case DOWN:
 				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY()+1) {
 					element = pawn;
-					canMove = true;
 				}
 			break;
 			case RIGHT:
 				if (pawn.getX() == mob.getX()+1 && pawn.getY() == mob.getY()) {
 					element = pawn;
-					canMove = true;
 				}
 			break;
 			case LEFT:
@@ -129,7 +125,7 @@ public final class Controller implements IController {
 		else if (element instanceof Dirt && mob instanceof Enemy) {
 			canMove = false;
 		}
-		else if(element instanceof Crystal) {
+		else if(element instanceof Crystal && mob instanceof Bob) {
 			canMove = true;
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
@@ -148,7 +144,7 @@ public final class Controller implements IController {
 			System.exit(0);
 		}
 		
-		else if (element instanceof Enemy) {
+		else if (element instanceof Enemy || element instanceof Bob) {
 			canMove = true;
 			this.view.lose();
 			element.setImage(null);
@@ -164,44 +160,66 @@ public final class Controller implements IController {
 		return canMove;
 		
 	}
-    public final void move() throws InterruptedException {
+
+	public final void move() throws InterruptedException {
     	final Random random = new Random();
     	ControllerOrder controllerOrder;
         for (;;) {
             for (final ActiveEntity pawn : this.model.getLevel().getPawns()) {
             	if(pawn instanceof Enemy) {
-            		switch (random.nextInt()%4) {	
-            	case 1:
-            		controllerOrder = ControllerOrder.UP;
-    				((Enemy) pawn).moveUp(this.testFront(pawn, controllerOrder));
-    			break;
-    			case 2:
-    				controllerOrder = ControllerOrder.DOWN;
-    				((Enemy) pawn).moveDown(this.testFront(pawn, controllerOrder));
-    			break;
-    			case 3:
-    				controllerOrder = ControllerOrder.RIGHT;
-    				((Enemy) pawn).moveRight(this.testFront(pawn, controllerOrder));
-    			break;
-    			case 4:
-    				controllerOrder = ControllerOrder.LEFT;
-    				((Enemy) pawn).moveLeft(this.testFront(pawn, controllerOrder));
-    			break;            	
+	            		switch (random.nextInt()%4) {	
+	            	case 0:
+	            		controllerOrder = ControllerOrder.UP;
+	    				((Enemy) pawn).moveUp(this.testFront(pawn, controllerOrder));
+	    			break;
+	    			case 1:
+	    				controllerOrder = ControllerOrder.DOWN;
+	    				((Enemy) pawn).moveDown(this.testFront(pawn, controllerOrder));
+	    			break;
+	    			case 2:
+	    				controllerOrder = ControllerOrder.RIGHT;
+	    				((Enemy) pawn).moveRight(this.testFront(pawn, controllerOrder));
+	    			break;
+	    			case 3:
+	    				controllerOrder = ControllerOrder.LEFT;
+	    				((Enemy) pawn).moveLeft(this.testFront(pawn, controllerOrder));
+	    			break;            	
+	            	}
             	}
+            	else if (pawn instanceof Rock) {
+            		controllerOrder = ControllerOrder.DOWN;
+            		((Rock) pawn).moveDown(this.testDown(pawn, controllerOrder));
             	}
-            	}       
+            	else if (pawn instanceof Crystal) {
+            		controllerOrder = ControllerOrder.DOWN;
+            		((Crystal) pawn).moveDown(this.testDown(pawn, controllerOrder));
+            	}
+        	}       
             model.note();
             Thread.sleep(timeLoop);
-            }         
-        }
-
-
-	@Override
-	public void control(int levelNumber) {
-		// TODO Auto-generated method stub
-		
+        }         
+ 	}
+	
+	private boolean testDown(ActiveEntity mob, final ControllerOrder controllerOrder) {
+		boolean canMove = true;
+		for (ActiveEntity pawn : this.model.getLevel().getPawns()){
+			if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY()+1) {
+				canMove = false;
+			}
+			
+			/* Finish method */
+			/*if (mob instanceof Crystal && !(pawn instanceof Bob) && ((Crystal) pawn).getFalling() > 1 && canMove == false) {
+				((Crystal) mob).razFalling();
+			}
+			
+			if (mob instanceof Crystal && pawn instanceof Bob &&((Crystal) mob).getFalling() == 0 && canMove == false) {
+				System.out.println("yo");
+				((Crystal) mob).razFalling();
+			}*/
+		}
+		return canMove;
 	}
-    }
+}
 
 
 
