@@ -18,9 +18,24 @@ public interface IModel{
 	 */
 	Observable getObservable();
 	
+	/**
+	 * Load the message
+	 * 
+	 * @param levelNumber
+	 * @throws IOException
+	 */
 	void loadLevel(int levelNumber) throws IOException;
-
+/**
+ *  Get the level
+ *  
+ * @return the the level
+ */
 	Level getLevel();
 
+	/**
+	 * note
+	 * 
+	 * note
+	 */
 	void note();
 }

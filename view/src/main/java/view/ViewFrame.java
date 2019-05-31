@@ -156,7 +156,7 @@ class ViewFrame implements KeyListener {
 	    
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				boardFrame.addSquare(this.model.getLevel().getFond(), x, y);
+				boardFrame.addSquare(this.model.getLevel().getBackground(), x, y);
 			}
 		}
 		for (IPawn pawn : this.model.getLevel().getPawns()) {

@@ -220,11 +220,11 @@ public final class Controller implements IController {
 				break;
 			case "Rock":
 				if (!(pawn instanceof Bob) && ((Rock) mob).getFalling() > 0 && !canMove) {
-					((Rock) mob).razFalling();
+					((Rock) mob).resetFalling();
 				}
 
 				if (pawn instanceof Bob && ((Rock) mob).getFalling() > 0 && !canMove) {
-					((Rock) mob).razFalling();
+					((Rock) mob).resetFalling();
 					this.view.lose();
 					mob.setImage(null);
 					this.model.getLevel().popPawn(mob);

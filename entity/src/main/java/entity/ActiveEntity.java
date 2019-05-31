@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import showboard.IPawn;
 /**
- * The Class View.
+ * The Class ActiveEntity.
  *
  * @author Kosbur
  */

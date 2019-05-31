@@ -50,7 +50,7 @@ public class DAOLevel extends DAOEntity<Level> {
 				
 				DigDirt fond = new DigDirt("Nothing.png");
 				fond.loadImage();
-				level.setFond(fond);
+				level.setBackground(fond);
 				
 				int x, y;
 				
