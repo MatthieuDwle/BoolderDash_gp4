@@ -1,6 +1,6 @@
 package entity;
 
-public class Dirt extends ActiveEntity implements IPop{
+public class Dirt extends ActiveEntity {
 
 	public Dirt(String imageName) {
 		super(imageName);

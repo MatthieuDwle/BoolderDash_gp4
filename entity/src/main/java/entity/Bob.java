@@ -1,6 +1,6 @@
 package entity;
 
-import java.util.ArrayList;
+
 
 import javax.swing.JOptionPane;
 
@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 
-public class Bob extends ActiveEntity implements IPop{
+public class Bob extends ActiveEntity{
 private int crystalCount = 0;
 public boolean End;
 

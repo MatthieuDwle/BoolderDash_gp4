@@ -16,11 +16,7 @@ public class Rock extends ActiveEntity implements IMovable{
 	public void razFalling() {
 		this.falling = 0;
 	}
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
-		}
+
 	@Override
 	public int getFalling() {
 		// TODO Auto-generated method stub

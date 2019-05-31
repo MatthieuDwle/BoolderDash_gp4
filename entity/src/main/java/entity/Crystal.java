@@ -1,6 +1,6 @@
 package entity;
 
-public class Crystal extends ActiveEntity implements IPop,IMovable{
+public class Crystal extends ActiveEntity implements IMovable{
 	private int falling;
 	public Crystal(String imageName) {
 		super(imageName);
@@ -15,11 +15,7 @@ public class Crystal extends ActiveEntity implements IPop,IMovable{
 	public void razFalling() {
 		this.falling = 0;
 	}
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
-		}
+
 	@Override
 	public int getFalling() {
 		// TODO Auto-generated method stub
