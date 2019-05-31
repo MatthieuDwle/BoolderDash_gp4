@@ -188,11 +188,11 @@ public final class Controller implements IController {
             	}
             	else if (pawn instanceof Rock) {
             		controllerOrder = ControllerOrder.DOWN;
-            		((Rock) pawn).moveDown(this.testDown(pawn, controllerOrder));
+            		((Rock) pawn).moveDown(this.testDown(pawn, controllerOrder, "Rock"));
             	}
             	else if (pawn instanceof Crystal) {
             		controllerOrder = ControllerOrder.DOWN;
-            		((Crystal) pawn).moveDown(this.testDown(pawn, controllerOrder));
+            		((Crystal) pawn).moveDown(this.testDown(pawn, controllerOrder, "Crystal"));
             	}
         	}       
             model.note();
@@ -200,22 +200,36 @@ public final class Controller implements IController {
         }         
  	}
 	
-	private boolean testDown(ActiveEntity mob, final ControllerOrder controllerOrder) {
+	private boolean testDown(ActiveEntity mob, final ControllerOrder controllerOrder, String type) {
 		boolean canMove = true;
 		for (ActiveEntity pawn : this.model.getLevel().getPawns()){
 			if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY()+1) {
 				canMove = false;
 			}
 			
-			/* Finish method */
-			/*if (mob instanceof Crystal && !(pawn instanceof Bob) && ((Crystal) pawn).getFalling() > 1 && canMove == false) {
-				((Crystal) mob).razFalling();
+			switch (type) {
+			case "Crystal":
+				if (!(pawn instanceof Bob) && ((Crystal) mob).getFalling() > 0 && !canMove) {
+					((Crystal) mob).razFalling();
+				}
+				
+				if (pawn instanceof Bob &&((Crystal) mob).getFalling() > 0 && !canMove) {
+					((Crystal) mob).razFalling();
+					System.exit(0);
+				}
+			break;
+			case "Rock":
+				if (!(pawn instanceof Bob) && ((Rock) mob).getFalling() > 0 && !canMove) {
+					System.out.println(((Rock) mob).getFalling());
+					((Rock) mob).razFalling();
+				}
+				
+				if (pawn instanceof Bob &&((Rock) mob).getFalling() > 0 && !canMove) {
+					((Rock) mob).razFalling();
+					System.exit(0);
+				}
+			break;
 			}
-			
-			if (mob instanceof Crystal && pawn instanceof Bob &&((Crystal) mob).getFalling() == 0 && canMove == false) {
-				System.out.println("yo");
-				((Crystal) mob).razFalling();
-			}*/
 		}
 		return canMove;
 	}

@@ -28,6 +28,6 @@ public class Crystal extends ActiveEntity implements IPop,IMovable{
 	@Override
 	public void setFalling() {
 		// TODO Auto-generated method stub
-		falling++;
+		this.falling++;
 	}
 }
