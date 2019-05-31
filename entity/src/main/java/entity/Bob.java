@@ -45,7 +45,6 @@ public boolean End;
 
 	public void addCrystal(int crystal) {
 		this.crystalCount++;
-		System.out.println(crystalCount);
 		if (this.crystalCount == crystal) {
 			JOptionPane.showMessageDialog(null, "YOU HAVE ENOUGH CRYSTALS");
 		}

@@ -53,7 +53,6 @@ public final class View implements IView, Runnable {
 				return ControllerOrder.LEFT;
 			default:
 				return null;
-			
 		}
 	}
 

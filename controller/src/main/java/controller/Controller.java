@@ -212,17 +212,22 @@ public final class Controller implements IController {
 
 				if (pawn instanceof Bob && ((Crystal) mob).getFalling() > 0 && !canMove) {
 					((Crystal) mob).razFalling();
+					this.view.lose();
+					mob.setImage(null);
+					this.model.getLevel().popPawn(mob);
 					System.exit(0);
 				}
 				break;
 			case "Rock":
 				if (!(pawn instanceof Bob) && ((Rock) mob).getFalling() > 0 && !canMove) {
-					System.out.println(((Rock) mob).getFalling());
 					((Rock) mob).razFalling();
 				}
 
 				if (pawn instanceof Bob && ((Rock) mob).getFalling() > 0 && !canMove) {
 					((Rock) mob).razFalling();
+					this.view.lose();
+					mob.setImage(null);
+					this.model.getLevel().popPawn(mob);
 					System.exit(0);
 				}
 				break;
