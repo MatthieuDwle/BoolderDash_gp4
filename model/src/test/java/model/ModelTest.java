@@ -26,7 +26,7 @@ public class ModelTest {
 
     @Before
     public void setUp() throws Exception {
-        //this.model = new IModel();
+        this.model = new Model(1);
     }
 
     @After
