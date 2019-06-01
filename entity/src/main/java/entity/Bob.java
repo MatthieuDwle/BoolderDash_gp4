@@ -85,7 +85,6 @@ private int crystalCount = 0;
 	
 	}
 
-	
 	/**
 	 * Gets the width
 	 * 

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Random;
 
 import contract.*;
@@ -19,7 +20,6 @@ public final class Controller implements IController {
 	private int crystal = 15;
 	/** The time of refresh all entity. */
 	private static final int timeLoop = 300;
-
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -55,15 +55,43 @@ public final class Controller implements IController {
 		}
 		switch (controllerOrder) {
 		case UP:
+			((Bob) bob).setImageName("BobUp1.png");
+			try {
+				((Bob) bob).loadImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			((Bob) bob).moveUp(this.testFront(bob, controllerOrder));
 			break;
 		case DOWN:
+			((Bob) bob).setImageName("BobDown1.png");
+			try {
+				((Bob) bob).loadImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			((Bob) bob).moveDown(this.testFront(bob, controllerOrder));
 			break;
 		case RIGHT:
+			((Bob) bob).setImageName("BobRight1.png");
+			try {
+				((Bob) bob).loadImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			((Bob) bob).moveRight(this.testFront(bob, controllerOrder));
 			break;
 		case LEFT:
+			((Bob) bob).setImageName("BobLeft1.png");
+			try {
+				((Bob) bob).loadImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			((Bob) bob).moveLeft(this.testFront(bob, controllerOrder));
 			break;
 		}
@@ -202,18 +230,10 @@ public final class Controller implements IController {
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
 			((Bob) mob).addCrystal(crystal);
-		} else if (element instanceof Wall || element instanceof Rock) {
+		} else if (element instanceof Wall || element instanceof Rock || (element instanceof Exit && ((Bob) mob).getCrystalCount() < crystal)) {
 			canMove = false;
-		} else if (element instanceof Exit && ((Bob) mob).getCrystalCount() < crystal) {
-			canMove = false;
-
-		} else if (element instanceof Exit && ((Bob) mob).getCrystalCount() >= crystal) {
-			canMove = true;
-			this.view.win();
-			System.exit(0);
 		}
-
-		else if (element instanceof Enemy || element instanceof Bob) {
+		else if ((element instanceof Enemy && mob instanceof Bob) || (element instanceof Bob && mob instanceof Enemy)) {
 			canMove = true;
 			this.view.lose();
 			element.setImage(null);
@@ -222,7 +242,9 @@ public final class Controller implements IController {
 			this.model.getLevel().popPawn(mob);
 			System.exit(0);
 		}
-
+		else if ((element instanceof Enemy && mob instanceof Enemy)) {
+			canMove = false;
+		}
 		else {
 			canMove = true;
 		}

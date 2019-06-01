@@ -51,14 +51,14 @@ private String imageName;
 	private String getImageName() {
 		return imageName;
 	}
-
+	
 	/**
 	 * Sets the Image Name.
 	 *
 	 * @param imageName
 	 *          the new imageName
 	 */
-	private void setImageName(String imageName) {
+	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
 
