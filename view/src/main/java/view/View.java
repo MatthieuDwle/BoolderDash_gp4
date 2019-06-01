@@ -26,6 +26,8 @@ public final class View implements IView, Runnable {
 	 * @param model
 	 *          the model
 	 */
+	
+	
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model, "coucou");
 		this.viewFrame.setWidth(model.getLevel().getBoard().getWidth());
@@ -57,10 +59,10 @@ public final class View implements IView, Runnable {
 	}
 
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Runnable#run()
+	
+	/**
+	 * Launch the creation of frame 
+	 * 
 	 */
 	@Override
 	public void run() {
@@ -77,14 +79,26 @@ public final class View implements IView, Runnable {
 		this.viewFrame.setController(controller);
 	}
 	
+	/**
+	 * Display a Pop Up with the condition of winning
+	 * @param crystal
+	 */
 	public void startPopup(int crystal){
 		JOptionPane.showMessageDialog(null, "CATCH " + crystal + " CRYSTAL TO ESCAPE !" );
 	}
 	
+	/**
+	 * Display a Pop Up with a win message
+	 * 
+	 */
 	public void win() {
 		JOptionPane.showMessageDialog(null, "YOU WIN !!!");
 	}
 	
+	/**
+	 * Display a message when Bob die 
+	 * 
+	 */
 	public void lose() {
 		JOptionPane.showMessageDialog(null, "YOU LOSE....");
 	}

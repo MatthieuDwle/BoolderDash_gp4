@@ -26,9 +26,12 @@ class ViewFrame implements KeyListener {
 	private int width;
 	/** The height. */
 	private int height;
-	/** The size of the frame. */
+	/** The size width of the frame. */
 	private int sizeFrameWidth;
+	/** The size height of the frame. */
 	private int sizeFrameHeight;
+	
+	/** The Board Frame*/
 	BoardFrame boardFrame;
 	
 	/**
@@ -96,6 +99,7 @@ class ViewFrame implements KeyListener {
 	private void setModel(IModel model) {
 		this.model = model;
 	}
+	
 	/*
 	 * (non-Javadoc)
 	 *
@@ -122,32 +126,138 @@ class ViewFrame implements KeyListener {
 
 	}
 	
+	/**
+	 * Gets the Board Frame 
+	 * 
+	 * @return boardFrame
+	 */
 	public BoardFrame getBoardFrame() {
 		return this.boardFrame;
 	}
 	
+	  /**
+     * Sets the width.
+     *
+     * @param width
+     *            the new width.
+     */
 	protected void setWidth(final int width) {
 		this.width = width;
 	}
 	
+	/**
+	 * Gets the width 
+	 * 
+	 * @return Width
+	 */
 	public int getWidth() {
 		return this.width;
 	}
 	
+	  /**
+     * Sets the height.
+     *
+     * @param height
+     *            the new height.
+     */
 	protected void setHeight(final int height) {
 		this.height = height;
 	}
 	
+	/**
+	 * Gets the height 
+	 * 
+	 * @return height
+	 */
 	public int getHeight() {
 		return this.height;
 	}
 	
+	 /**
+     * Sets the frame size.
+     *
+     * @param sizeFrameWidth
+     *            the new size width of the frame.
+     * @param sizeFrameHeight
+     * 			  the new size height of the frame.
+     */
 	protected void setSizeFrame() {
 		this.sizeFrameWidth = width*16*3;
 		this.sizeFrameHeight = height*16*3;
 	}
 	
-	
+	/**
+	 *  Configure the frame 
+	 * the name of frame
+	 * Dimension and display size
+	 * 
+	 * * <h2>Explanation of how the method works.</h2>
+     * <p>
+     * A double loop to add all square to the frame.
+     * </p>
+     *
+     * <pre>
+     * {@code
+     *         for (int x = 0; x < width; x++) {
+     *             for (int y = 0; y < height; y++) {
+     *                 [...]
+     *              }
+     *         }
+     * }
+     * </pre>
+     * <p>
+     * To have level background
+     * Get dig dirt to the background.
+     * </p>
+     *
+     *
+     * <pre>
+     * {@code
+     *  boardFrame.addSquare(this.model.getLevel().getBackground(), x, y);           
+     *             
+     * }
+     * </pre>
+     * <p>
+     * The pawn are added to the frame .
+     * </p>
+     *
+     * <pre>
+     * {@code
+     *              	for (IPawn pawn : this.model.getLevel().getPawns()) {
+			boardFrame.addPawn(pawn);
+     * }
+     * </pre>
+     * <p>
+     * The pawns are added to the frame.
+     * </p>
+     *
+     * <pre>
+     * {@code
+     *         for (final Monster monster : this.monsters) {
+     *             frame.addPawn(monster);
+     *         }
+     * }
+     * </pre>
+     * <p>
+     * Add the frame as observer to refresh display.
+     * </p>
+     *
+     * <pre>
+     * {@code
+     *       model.getObservable().addObserver(boardFrame.getObserver());
+     * }
+     * </pre>
+     * <p>
+     * Listen the key
+     * </p>
+     *
+     * <pre>
+     * {@code
+     *     	this.boardFrame.addKeyListener(this);
+     * }
+     * </pre>
+     *
+	 */
 	public void frameConfigure() {
 		this.boardFrame = new BoardFrame("Boulderdash");
 	    this.boardFrame.setDimension(new Dimension(width, height));
