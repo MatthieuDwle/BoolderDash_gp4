@@ -25,11 +25,11 @@ public interface IModel{
 	 * @throws IOException
 	 */
 	void loadLevel(int levelNumber) throws IOException;
-/**
- *  Get the level
- *  
- * @return the the level
- */
+	/**
+	 *  Get the level
+	 *  
+	 * @return the the level
+	 */
 	Level getLevel();
 
 	/**

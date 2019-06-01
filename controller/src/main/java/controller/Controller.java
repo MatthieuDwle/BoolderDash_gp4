@@ -3,12 +3,11 @@ package controller;
 import java.io.IOException;
 import java.util.Random;
 
-import contract.ControllerOrder;
-import contract.IController;
+import contract.*;
 import entity.*;
 import model.Model;
 import view.View;
-import contract.IView;
+
 
 /**
  * The Class Controller.
@@ -16,9 +15,9 @@ import contract.IView;
 public final class Controller implements IController {
 
 	/** The view. */
-	private View view;
+	private IView view;
 	/** The model. */
-	private Model model;
+	private IModel model;
 	/** The number of crystal goal. */
 	private int crystal = 15;
 	/** The time of refresh all entity. */
