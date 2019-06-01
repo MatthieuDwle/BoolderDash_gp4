@@ -8,6 +8,7 @@ import contract.IController;
 import entity.*;
 import model.Model;
 import view.View;
+import contract.IView;
 
 /**
  * The Class Controller.
@@ -26,9 +27,9 @@ public final class Controller implements IController {
 	/**
 	 * Instantiates a new controller.
 	 *
-	 * @param view  the view
-	 * @param model the model
-	 * @throws InterruptedException
+	 * @param view
+	 * @param model
+	 * @throws InterruptedException				
 	 */
 	public Controller() throws InterruptedException {
 		this.model = new Model();
@@ -46,7 +47,9 @@ public final class Controller implements IController {
 	/**
 	 * Order perform.
 	 *
-	 * @param controllerOrder the controller order
+	 * @param controllerOrder 
+	 * 
+	 * Translated the key pressed in movement of Bob
 	 */
 	/*
 	 * (non-Javadoc)
@@ -82,6 +85,94 @@ public final class Controller implements IController {
 	 * @param mob
 	 * @param controllerOrder
 	 * @return canMove
+	 * 
+	 * <p> 
+	 * 		Test in front of Bob in terms of the Bob direction. 
+	 * </p>
+	 * {@code
+	 * 		for (ActiveEntity pawn : this.model.getLevel().getPawns()) {
+			switch (controllerOrder) {
+			case UP:
+				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY() - 1) {
+					element = pawn;
+				}
+				break;
+			case DOWN:
+				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY() + 1) {
+					element = pawn;
+				}
+				break;
+			case RIGHT:
+				if (pawn.getX() == mob.getX() + 1 && pawn.getY() == mob.getY()) {
+					element = pawn;
+				}
+				break;
+			case LEFT:
+				if (pawn.getX() == mob.getX() - 1 && pawn.getY() == mob.getY()) {
+					element = pawn;
+				}
+				break;
+			}
+		}
+	 * }
+	 * <p>
+	 * 		Test if is dirt in front of Bob. Then Bod destroy the dirt.
+	 * </p>
+	 * {@code
+	 * 		if (element instanceof Dirt && mob instanceof Bob) {
+			canMove = true;
+			element.setImage(null);
+			this.model.getLevel().popPawn(element);
+		}
+	 * }
+	 * <p>
+	 * 		Test if is dirt in front of Enemies. Then they are blocked.
+	 * </p>
+	 * {@code 
+	 * 		else if (element instanceof Dirt && mob instanceof Enemy) {
+			canMove = false;
+			
+	 * 		}
+	 * }
+	 * <p>
+	 * 		Test if is Crystal in front of Bob. Then Bob take it.
+	 * </p>
+	 * {@code
+	 * 		else if (element instanceof Crystal && mob instanceof Bob) {
+			canMove = true;
+			element.setImage(null);
+			this.model.getLevel().popPawn(element);
+			((Bob) mob).addCrystal(crystal);
+			}
+	 * }
+	 * 
+	 * <p>
+	 * 		Don't allow anyone to cross Wall or Rock
+	 * </p>
+	 * {@code
+	 * 		else if (element instanceof Wall || element instanceof Rock) {
+			canMove = false;
+			}
+	 * }
+	 * <p>
+	 * 		Test if is the Exit in front of Bob and doesn't have enough crystal. Then he can't pass.
+	 * </p>
+	 * {@code
+	 * 		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() < crystal) {
+			canMove = false;
+
+			}
+	 * }
+	 * <p>
+	 * 		Test if is the Exit in front of Bob and has enough crystal. Then he can't pass.
+	 * </p>
+	 * {@code
+	 * 		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() >= crystal) {
+			canMove = true;
+			this.view.win();
+			System.exit(0);
+			}
+	 * }
 	 */
 	private boolean testFront(ActiveEntity mob, final ControllerOrder controllerOrder) {
 		ActiveEntity element = null;
@@ -150,8 +241,70 @@ public final class Controller implements IController {
 	}
 
 	/**
-	 * 
 	 * @throws InterruptedException
+	 * 
+	 * <p>
+	 * 		Infinite loop for
+	 * </p>
+	 * {@code
+	 * 		for (;;) {
+	 * 		}
+	 * }
+	 * 
+	 * <p>
+	 * 		Browse all array list
+	 * </p>
+	 * {@code 
+	 * 		for (final ActiveEntity pawn : this.model.getLevel().getPawns()) {	
+			}
+	 * }
+	 * 
+	 * <p>
+	 * 		Move enemies randomly 
+	 * </p>
+	 * {@code
+	 * 		if (pawn instanceof Enemy) {
+					switch (random.nextInt() % 4) {
+					case 0:
+						controllerOrder = ControllerOrder.UP;
+						((Enemy) pawn).moveUp(this.testFront(pawn, controllerOrder));
+						break;
+					case 1:
+						controllerOrder = ControllerOrder.DOWN;
+						((Enemy) pawn).moveDown(this.testFront(pawn, controllerOrder));
+						break;
+					case 2:
+						controllerOrder = ControllerOrder.RIGHT;
+						((Enemy) pawn).moveRight(this.testFront(pawn, controllerOrder));
+						break;
+					case 3:
+						controllerOrder = ControllerOrder.LEFT;
+						((Enemy) pawn).moveLeft(this.testFront(pawn, controllerOrder));
+						break;
+					}
+			}
+	 * }
+	 * 
+	 * <p>
+	 * 		Test if a Crystal or a Rock and they fall if they can. 
+	 * </p>
+	 * {@code 
+	 * 		else if (pawn instanceof Rock) {
+					controllerOrder = ControllerOrder.DOWN;
+					((Rock) pawn).moveDown(this.testDown(pawn, controllerOrder, "Rock"));
+				} else if (pawn instanceof Crystal) {
+					controllerOrder = ControllerOrder.DOWN;
+					((Crystal) pawn).moveDown(this.testDown(pawn, controllerOrder, "Crystal"));
+			}
+	 * } 
+	 * 
+	 * <p>
+	 * 		Run note method and make pause in the loop.
+	 * </p>
+	 * {@code 
+	 * 		model.note();
+			Thread.sleep(timeLoop);
+	 * }  
 	 */
 	public final void move() throws InterruptedException {
 		final Random random = new Random();
@@ -196,6 +349,69 @@ public final class Controller implements IController {
 	 * @param controllerOrder
 	 * @param type
 	 * @return canMove
+	 * 
+	 * <p>
+	 * 		Browse all entity in the array-list and test they can fall.
+	 * </p>
+	 * {@code 
+	 * 		for (ActiveEntity pawn : this.model.getLevel().getPawns()) {
+				if (pawn.getX() == mob.getX() && pawn.getY() == mob.getY() + 1) {
+					canMove = false;
+				}
+			}
+		}
+	 * }
+	 * 
+	 * <p>
+	 * 		Select if is a Rock or a Crystal. 
+	 * </p>
+	 * {@code 
+	 * 		switch (type) {
+			case "Crystal":
+			
+				break;
+			case "Rock":
+			
+				break;
+			}
+	 * } 
+	 * 
+	 * <p>
+	 * 		reset falling count if they can't fall (reset when they stop falling)
+	 * </p>
+	 * {@code 
+	 * 		if (!(pawn instanceof Bob) && ((Crystal) mob).getFalling() > 0 && !canMove) {
+					((Crystal) mob).resetFalling();
+			}
+			
+	 * }
+	 * {@code 
+	 * 		if (!(pawn instanceof Bob) && ((Rock) mob).getFalling() > 0 && !canMove) {
+					((Rock) mob).resetFalling();
+			}
+	 * }
+	 * 
+	 * <p>
+	 * 		Kill Bod if is under them
+	 * </p>
+	 * {@code
+	 * 		if (pawn instanceof Bob && ((Crystal) mob).getFalling() > 0 && !canMove) {
+					((Crystal) mob).resetFalling();
+					this.view.lose();
+					mob.setImage(null);
+					this.model.getLevel().popPawn(mob);
+					System.exit(0);
+			}
+	 * }
+	 * {@code
+	 * 		if (pawn instanceof Bob && ((Rock) mob).getFalling() > 0 && !canMove) {
+					((Rock) mob).resetFalling();
+					this.view.lose();
+					mob.setImage(null);
+					this.model.getLevel().popPawn(mob);
+					System.exit(0);
+			}
+	 * } 
 	 */
 	private boolean testDown(ActiveEntity mob, final ControllerOrder controllerOrder, String type) {
 		boolean canMove = true;
@@ -207,11 +423,11 @@ public final class Controller implements IController {
 			switch (type) {
 			case "Crystal":
 				if (!(pawn instanceof Bob) && ((Crystal) mob).getFalling() > 0 && !canMove) {
-					((Crystal) mob).razFalling();
+					((Crystal) mob).resetFalling();
 				}
 
 				if (pawn instanceof Bob && ((Crystal) mob).getFalling() > 0 && !canMove) {
-					((Crystal) mob).razFalling();
+					((Crystal) mob).resetFalling();
 					this.view.lose();
 					mob.setImage(null);
 					this.model.getLevel().popPawn(mob);

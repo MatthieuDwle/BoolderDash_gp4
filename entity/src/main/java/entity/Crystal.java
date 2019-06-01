@@ -38,7 +38,7 @@ public class Crystal extends ActiveEntity implements IMovable{
 	 * 
 	 * @param falling the new falling
 	 */
-	public void razFalling() {
+	public void resetFalling() {
 		this.falling = 0;
 	}
 
