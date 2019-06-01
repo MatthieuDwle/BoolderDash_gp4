@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * The Class DBConnection.
  *
- * @author Jean-Aymeric Diet
+ * @author Kosbur
  */
 final class DBConnection {
 	/** The instance. */
@@ -25,7 +25,18 @@ final class DBConnection {
 
 	/**
 	 * Gets the single instance of DBConnection.
-	 *
+	 * 
+	</pre>
+     * <p>
+     * Gets the single instance of DBConnection.
+     * </p>
+     *
+     * <pre>
+     * {@code
+     *      	if (DBConnection.INSTANCE == null) {
+			DBConnection.INSTANCE = new DBConnection();
+		}
+     * }
 	 * @return single instance of DBConnection
 	 */
 	public static synchronized DBConnection getInstance() {

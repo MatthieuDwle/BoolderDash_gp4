@@ -64,6 +64,7 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the entity
 	 * @return true, if successful
 	 */
+	
 	public abstract boolean update(E entity);
 
 }
