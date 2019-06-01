@@ -30,7 +30,7 @@ class ViewFrame implements KeyListener {
 	private int sizeFrameWidth;
 	/** The size height of the frame. */
 	private int sizeFrameHeight;
-	
+	private String title;
 	/** The Board Frame*/
 	BoardFrame boardFrame;
 	
@@ -57,7 +57,7 @@ class ViewFrame implements KeyListener {
 	 *           the headless exception
 	 */
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
-		
+		this.title = title;
 		this.setModel(model);
 	}
 
@@ -259,7 +259,7 @@ class ViewFrame implements KeyListener {
      *
 	 */
 	public void frameConfigure() {
-		this.boardFrame = new BoardFrame("Boulderdash");
+		this.boardFrame = new BoardFrame(title);
 	    this.boardFrame.setDimension(new Dimension(width, height));
 	    this.boardFrame.setDisplayFrame(new Rectangle(0,0,width,height));
 	    this.boardFrame.setSize(sizeFrameWidth, sizeFrameHeight);

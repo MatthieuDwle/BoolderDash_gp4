@@ -1,12 +1,9 @@
 package controller;
 
-import java.io.IOException;
 import java.util.Random;
 
 import contract.*;
 import entity.*;
-import model.Model;
-import view.View;
 
 
 /**
@@ -30,15 +27,9 @@ public final class Controller implements IController {
 	 * @param model
 	 * @throws InterruptedException				
 	 */
-	public Controller() throws InterruptedException {
-		this.model = new Model();
-		try {
-			model.loadLevel(1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.view = new View(model);
-		this.view.startPopup(crystal);
+	public Controller(final IModel model, final IView view) throws InterruptedException {
+		this.model = model;
+		this.view = view;
 		view.setController(this);
 		this.move();
 	}

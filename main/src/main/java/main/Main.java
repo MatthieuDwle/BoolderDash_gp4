@@ -7,14 +7,17 @@ package main;
 import java.io.IOException;
 
 import controller.Controller;
+import model.Model;
+import view.View;
 
 /**
  * The Class Main.
  *
  * @author Jean-Aymeric Diet
  */
-public abstract class Main {
 
+public abstract class Main {
+	private static int crystal = 15;
     /**
      * The main method.
      *
@@ -25,6 +28,8 @@ public abstract class Main {
      */
 	
     public static void main(final String[] args) throws IOException, InterruptedException {
-    	final Controller controller = new Controller();
+    	Model model = new Model(1);
+    	View view = new View(model, crystal);
+    	final Controller controller = new Controller(model, view);
     }
 }

@@ -18,11 +18,14 @@ public final class Model extends Observable implements IModel {
 private Level level ;
 
 	/**
-	 * Instantiates a new model.
+	 * Instantiates a new model and run loadLevel.
 	 */
-	public Model() {
-		super();
-		//this.level = new Level();
+	public Model(int levelNumber) {
+		try {
+			this.loadLevel(levelNumber);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -84,7 +87,9 @@ private Level level ;
 	public Observable getObservable() {
 		return this;
 	}
-
+	/**
+	 * The Observer method
+	 */
 	@Override
 	public void note() {
 		// TODO Auto-generated method stub

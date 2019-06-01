@@ -28,12 +28,13 @@ public final class View implements IView, Runnable {
 	 */
 	
 	
-	public View(final IModel model) {
-		this.viewFrame = new ViewFrame(model, "coucou");
+	public View(final IModel model, final int crystal) {
+		this.viewFrame = new ViewFrame(model, "BoulderDash");
 		this.viewFrame.setWidth(model.getLevel().getBoard().getWidth());
 		this.viewFrame.setHeight(model.getLevel().getBoard().getHeight());
 		this.viewFrame.setSizeFrame();
 		SwingUtilities.invokeLater(this);
+		this.startPopup(crystal);
 	}
 
 	/**
