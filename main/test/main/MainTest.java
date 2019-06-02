@@ -9,16 +9,30 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import model.Model;
-
+/**
+ * The class Main Test
+ * 
+ * @author asus
+ *
+ */
 public class MainTest {
 
 	
-
+/**
+ * Instantiate a new Model
+ * 
+ * @throws Exception
+ */
 	@Before
 	public void setUp() throws Exception {
 		Model model = new Model(1);
 	}
 
+	/**
+	 * 
+	 * Testing if Model have the godd level number or model is out of range 
+	 * 
+	 */
 	@Test
 	public void testMain() {
 		try {
