@@ -281,6 +281,7 @@ public final class Controller implements IController {
 		return canMove;
 
 	}
+	
 	/**
 	 * @throws InterruptedException
 	 * 
