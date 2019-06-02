@@ -50,8 +50,7 @@ private Level level ;
      */
 	private void setLevel(Level level) {
 		this.level = level;
-		this.setChanged();
-		this.notifyObservers();
+		this.note();
 	}
 
 	/**

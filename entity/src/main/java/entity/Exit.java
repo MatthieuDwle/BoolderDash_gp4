@@ -14,13 +14,12 @@ public class Exit extends ActiveEntity {
      * @param imageName
      *            the image name
      */	
-public Exit(String imageName) {
+	public Exit(String imageName) {
 		super(imageName);
-		// TODO Auto-generated constructor stub
 	}
 	
 
-	}
+}
 	
 
 

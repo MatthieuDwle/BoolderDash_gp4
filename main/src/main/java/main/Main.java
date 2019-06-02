@@ -30,6 +30,6 @@ public abstract class Main {
     public static void main(final String[] args) throws IOException, InterruptedException {
     	Model model = new Model(1);
     	View view = new View(model, crystal);
-    	final Controller controller = new Controller(model, view);
+    	new Controller(model, view, crystal);
     }
 }

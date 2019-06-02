@@ -1,10 +1,7 @@
 package view;
 
-import java.awt.Dimension;
-import java.awt.HeadlessException;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import contract.IController;
 import contract.IModel;
@@ -30,21 +27,10 @@ class ViewFrame implements KeyListener {
 	private int sizeFrameWidth;
 	/** The size height of the frame. */
 	private int sizeFrameHeight;
+	/** The title of the Frame*/
 	private String title;
 	/** The Board Frame*/
 	BoardFrame boardFrame;
-	
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @throws HeadlessException
-	 *           the headless exception
-	 */
-	public ViewFrame(final IModel model) throws HeadlessException {
-		
-	}
 
 	/**
 	 * Instantiates a new view frame.
@@ -144,15 +130,6 @@ class ViewFrame implements KeyListener {
 		this.width = width;
 	}
 	
-	/**
-	 * Gets the width 
-	 * 
-	 * @return Width
-	 */
-	public int getWidth() {
-		return this.width;
-	}
-	
 	  /**
      * Sets the height.
      *
@@ -161,15 +138,6 @@ class ViewFrame implements KeyListener {
      */
 	protected void setHeight(final int height) {
 		this.height = height;
-	}
-	
-	/**
-	 * Gets the height 
-	 * 
-	 * @return height
-	 */
-	public int getHeight() {
-		return this.height;
 	}
 	
 	 /**

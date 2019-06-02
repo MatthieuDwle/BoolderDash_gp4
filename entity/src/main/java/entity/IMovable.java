@@ -19,5 +19,4 @@ public interface IMovable {
 	 * SetFalling
 	 */
 	void setFalling();
-
 	 }

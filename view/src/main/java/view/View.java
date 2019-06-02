@@ -65,7 +65,6 @@ public final class View implements IView, Runnable {
 	 * Launch the creation of frame 
 	 * 
 	 */
-	@Override
 	public void run() {
 		this.viewFrame.frameConfigure();
 	}

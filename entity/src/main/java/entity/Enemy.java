@@ -17,7 +17,6 @@ public class Enemy extends ActiveEntity{
 	
 	public Enemy(String imageName) {
 		super(imageName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

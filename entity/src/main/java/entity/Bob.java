@@ -25,7 +25,6 @@ private int crystalCount = 0;
  */
 	public Bob(String imageName) {
 		super(imageName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -72,11 +71,11 @@ private int crystalCount = 0;
 		}
 	}
 	
-/**
- * Increment the Crystal Count
- * @param crystal
- * Count the number of crystal for win the game 
- */
+	/**
+ 	* Increment the Crystal Count
+ 	* @param crystal
+ 	* Count the number of crystal for win the game 
+ 	*/
 	public void addCrystal(int crystal) {
 		this.crystalCount++;
 		if (this.crystalCount == crystal) {

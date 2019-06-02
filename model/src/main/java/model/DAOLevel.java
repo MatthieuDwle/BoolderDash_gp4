@@ -79,7 +79,6 @@ public class DAOLevel extends DAOEntity<Level> {
      * </pre>
      * <p>
      * Initialisation of the height and width of the kind of level
-     * 
      * </p>
      *
      *
@@ -267,7 +266,6 @@ public class DAOLevel extends DAOEntity<Level> {
 						else {
 							resultSetLevel.next();
 							char Element = resultSetLevel.getString("Element").charAt(0);
-							int Ligne = resultSetLevel.getInt("Ligne");
 							
 							
 							if (Element == lvlProperties.getWall()) {

@@ -25,13 +25,6 @@ public class Level extends Entity{
 	}
 	
 	/**
-	 * Level
-	 */
-	public Level() {
-		this(0,0);
-	}
-	
-	/**
 	 * Gets the Board.
 	 *
 	 * @return the board

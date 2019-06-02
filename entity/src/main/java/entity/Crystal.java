@@ -17,7 +17,6 @@ public class Crystal extends ActiveEntity implements IMovable{
      */
 	public Crystal(String imageName) {
 		super(imageName);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -47,9 +46,7 @@ public class Crystal extends ActiveEntity implements IMovable{
 	 * 
 	 * @return falling
 	 */
-	@Override
 	public int getFalling() {
-		// TODO Auto-generated method stub
 		return this.falling;
 	}
 	
@@ -58,9 +55,7 @@ public class Crystal extends ActiveEntity implements IMovable{
 	 * 
 	 * @param falling increment
 	 */
-	@Override
 	public void setFalling() {
-		// TODO Auto-generated method stub
 		this.falling++;
 	}
 }

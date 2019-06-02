@@ -5,8 +5,7 @@ package entity;
  *
  * @author Kosbur
  */
-public class DigDirt extends GraphicEntity
-{
+public class DigDirt extends GraphicEntity {
 
 	/**
 	 * Instantiates a new Dig Dirt
@@ -16,7 +15,6 @@ public class DigDirt extends GraphicEntity
 	 */		
 	public DigDirt(String imageName) {
 		super(imageName);
-		// TODO Auto-generated constructor stub
 	}
 
 }

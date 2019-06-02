@@ -28,7 +28,6 @@ private String imageName;
      *            the image name
      */
 	public GraphicEntity(String imageName) {
-		// TODO Auto-generated constructor stub
 		  this.setImageName(imageName);
 	}
 
@@ -37,9 +36,7 @@ private String imageName;
 	 *
 	 * @return the image
 	 */
-	@Override
 	public Image getImage() {
-		// TODO Auto-generated method stub
 		 return this.image;
 	}
 

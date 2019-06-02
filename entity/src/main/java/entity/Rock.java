@@ -18,7 +18,6 @@ public class Rock extends ActiveEntity implements IMovable{
 	 */	
 	public Rock(String imageName) {
 		super(imageName);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -49,9 +48,7 @@ public class Rock extends ActiveEntity implements IMovable{
 	 *
 	 * @return the ImageName
 	 */
-	@Override
 	public int getFalling() {
-		// TODO Auto-generated method stub
 		return this.falling;
 	}
 	
@@ -61,9 +58,7 @@ public class Rock extends ActiveEntity implements IMovable{
 	 * @param imageName
 	 *          the new imageName
 	 */
-	@Override
 	public void setFalling() {
-		// TODO Auto-generated method stub
 		this.falling++;
 	}
 
