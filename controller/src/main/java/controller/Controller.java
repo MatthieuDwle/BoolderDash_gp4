@@ -243,7 +243,7 @@ public final class Controller implements IController {
 			element.setImage(null);
 			this.model.getLevel().popPawn(element);
 			((Bob) mob).addCrystal(crystal);
-		} else if (element instanceof Wall || element instanceof Rock || (element instanceof Exit && ((Bob) mob).getCrystalCount() < crystal && mob instanceof Bob)) {
+		} else if (element instanceof Wall || element instanceof Rock) {
 			canMove = false;
 		}
 		else if ((element instanceof Enemy && mob instanceof Bob) || (element instanceof Bob && mob instanceof Enemy)) {
@@ -258,14 +258,22 @@ public final class Controller implements IController {
 		else if ((element instanceof Enemy && mob instanceof Enemy) || (element instanceof Crystal && mob instanceof Enemy)) {
 			canMove = false;
 		}
-		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() >= crystal && mob instanceof Bob) {
-			canMove = true;
-			this.view.win();
-			element.setImage(null);
-			this.model.getLevel().popPawn(element);
-			mob.setImage(null);
-			this.model.getLevel().popPawn(mob);
-			System.exit(0);
+		else if ((element instanceof Exit && mob instanceof Enemy)) {
+			canMove = false;
+		}
+		else if ((element instanceof Exit && mob instanceof Bob) && ((Bob) mob).getCrystalCount() >= crystal) {
+			if ( ((Bob) mob).getCrystalCount() < crystal) {
+				canMove = false;
+			}
+			else {
+				canMove = true;
+				this.view.win();
+				element.setImage(null);
+				this.model.getLevel().popPawn(element);
+				mob.setImage(null);
+				this.model.getLevel().popPawn(mob);
+				System.exit(0);
+			}
 		}
 		else {
 			canMove = true;
@@ -273,7 +281,6 @@ public final class Controller implements IController {
 		return canMove;
 
 	}
-
 	/**
 	 * @throws InterruptedException
 	 * 
@@ -467,7 +474,8 @@ public final class Controller implements IController {
 
 			switch (type) {
 			case "Crystal":
-				if (!(pawn instanceof Bob) && ((Crystal) mob).getFalling() > 0 && !canMove) {
+				if (!(pawn instanceof Bob
+						) && ((Crystal) mob).getFalling() > 0 && !canMove) {
 					((Crystal) mob).resetFalling();
 				}
 
