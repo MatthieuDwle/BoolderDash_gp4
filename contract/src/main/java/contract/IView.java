@@ -9,11 +9,13 @@ public interface IView {
 	/**
 	 * Display a pop-up
 	 * @param crystal
+	 * 				the number of crystal must have to win
 	 */
 	void startPopup(int crystal);
 	/**
 	 * Set the controller in the view
 	 * @param controller
+	 * 				the controller
 	 */
 	void setController(final IController controller);
 	/**

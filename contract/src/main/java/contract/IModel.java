@@ -22,7 +22,9 @@ public interface IModel{
 	 * Load the message
 	 * 
 	 * @param levelNumber
+	 * 					the number of the level
 	 * @throws IOException
+	 * 					throws ioexception
 	 */
 	void loadLevel(int levelNumber) throws IOException;
 	/**

@@ -25,6 +25,8 @@ public final class View implements IView, Runnable {
 	 *
 	 * @param model
 	 *          the model
+	 * @param crystal
+	 * 			the number of crystal must have to win         
 	 */
 	
 	
@@ -82,6 +84,7 @@ public final class View implements IView, Runnable {
 	/**
 	 * Display a Pop Up with the condition of winning
 	 * @param crystal
+	 * 			the number of crystal must have to win 
 	 */
 	public void startPopup(int crystal){
 		JOptionPane.showMessageDialog(null, "CATCH " + crystal + " CRYSTAL TO ESCAPE !" );
