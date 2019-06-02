@@ -2,31 +2,19 @@ package entity;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
+/**
+ * The class LevelTest
+ * @author asus
+ *
+ */
 public class LevelTest {
 	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {	
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	/**
+	 * 
+	 *Testing of PutPawn add 1 pawn 
+	 *
+	 */
 	@Test
 	public void testPutPawn() {
 		ActiveEntity pawn = new ActiveEntity("Wall.png");
@@ -35,6 +23,10 @@ public class LevelTest {
 		assertTrue("The level should be have 1 pawn", level.getPawns().size() == 1);
 	}
 
+	/**
+	 * Testing of PopPawn if he remove a pawn
+	 * 
+	 */
 	@Test
 	public void testPopPawn() {
 		ActiveEntity pawn = new ActiveEntity("Wall.png");

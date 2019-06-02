@@ -5,37 +5,30 @@
 package model;
 
 import java.io.IOException;
-
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * The class ModelTest
+ * 
+ * @author asus
+ *
+ */
 public class ModelTest {
     private Model model;
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
-
+ 
+    /** Instantiate a new level number*/
     @Before
     public void setUp() throws Exception {
         this.model = new Model(1);
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
-
     /**
-     * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
+     * Test method for loading the level {@link model.Model#loadLevel(java.lang.String)}.
      */
+    
     @Test
     public void testGetXindex() {
         try {
