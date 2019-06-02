@@ -2,6 +2,10 @@ package entity;
 
 import static org.junit.Assert.*;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.util.*;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,6 +13,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class GraphicEntityTest {
+	
+	   private Image image;
+	    private String imageName;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -26,24 +33,10 @@ public class GraphicEntityTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testGraphicEntity() {
-		fail("Not yet implemented");
-	}
 
 	@Test
-	public void testGetImage() {
-		fail("Not yet implemented");
+	public void testLoadImage() throws IOException {
+		Wall wall = new Wall("Wall.png");
+		wall.loadImage();
 	}
-
-	@Test
-	public void testSetImage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLoadImage() {
-		fail("Not yet implemented");
-	}
-
 }

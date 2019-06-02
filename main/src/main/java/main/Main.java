@@ -28,7 +28,7 @@ public abstract class Main {
      */
 	
     public static void main(final String[] args) throws IOException, InterruptedException {
-    	Model model = new Model(5);
+    	Model model = new Model(1);
     	View view = new View(model, crystal);
     	new Controller(model, view, crystal);
     }
