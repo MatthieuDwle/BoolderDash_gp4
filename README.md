@@ -1,3 +1,3 @@
-# JPU-BlankProject
+# Boulder Dash Project
 
-Base de démarrage pour le projet Jave/POO/UML des 1ières années Exia-Cesi
+Reproduction of the original arcade game for the CESI
