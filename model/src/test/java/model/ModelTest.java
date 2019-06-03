@@ -4,9 +4,7 @@
  */
 package model;
 
-import java.io.IOException;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -18,28 +16,13 @@ import org.junit.Test;
 public class ModelTest {
     private Model model;
 
- 
-    /** 
-     * Instantiate new model
-     * @throws Exception
-     * 			throws exception
-     */
-    @Before
-    public void setUp() throws Exception {
-        this.model = new Model(1);
-    }
-
     /**
      * test link with level
      */
     @Test
-    public void testGetXindex() {
-        try {
-			this.model.loadLevel(1);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void testLoadLevel() {
+    	
+    	this.model = new Model(1);
         Assert.assertEquals(0, this.model.getLevel().getPawns().get(0).getX());
         
     }
