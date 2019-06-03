@@ -1,5 +1,7 @@
 package entity;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.IOException;
 
 
@@ -24,5 +26,6 @@ public class GraphicEntityTest {
 	public void testLoadImage() throws IOException {
 		Wall wall = new Wall("Wall.png");
 		wall.loadImage();
+		assertNotNull(wall.getImage());
 	}
 }
