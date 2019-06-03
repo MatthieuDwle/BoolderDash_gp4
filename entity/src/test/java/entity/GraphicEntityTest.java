@@ -21,6 +21,7 @@ public class GraphicEntityTest {
 	/**
 	 * The method for test the loading of image
 	 * @throws IOException
+	 * 			throws the exception
 	 */
 	@Test
 	public void testLoadImage() throws IOException {

@@ -35,9 +35,7 @@ public class Rock extends ActiveEntity implements IMovable{
 	}
 
 	/**
-	 * Instantiate resetFalling
-	 * 
-	 * @param falling to 0
+	 * Reset the falling value
 	 */
 	public void resetFalling() {
 		this.falling = 0;
@@ -54,9 +52,6 @@ public class Rock extends ActiveEntity implements IMovable{
 	
 	/**
 	 * Sets the Image Name.
-	 *
-	 * @param imageName
-	 *          the new imageName
 	 */
 	public void setFalling() {
 		this.falling++;

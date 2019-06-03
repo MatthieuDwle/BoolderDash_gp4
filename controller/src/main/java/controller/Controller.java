@@ -105,9 +105,10 @@ public final class Controller implements IController {
 	/**
 	 * 
 	 * @param mob
+	 * 				pawn in movement	
 	 * @param controllerOrder
+	 * 				direction order
 	 * @return canMove
-	 * 
 	 * 
 	 * <p> 
 	 * 		Test in front of Bob in terms of the Bob direction. 
@@ -186,27 +187,65 @@ public final class Controller implements IController {
 	 *		}
 	 * }
 	 * </pre>
+	 * 
 	 * <p>
-	 * 		Test if is the Exit in front of Bob and doesn't have enough crystal. Then he can't pass.
+	 * 		collision Enemy/Bob and kill themselves
 	 * </p>
 	 * <pre>
-	 * {@code
-	 * 		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() < crystal) {
-     *			canMove = false;
-     *
+	 * {@code 
+	 *     else if ((element instanceof Enemy && mob instanceof Bob) || (element instanceof Bob && mob instanceof Enemy)) {
+	 *			canMove = true;
+	 *			this.view.lose();
+	 *			element.setImage(null);
+	 *			this.model.getLevel().popPawn(element);
+	 *			mob.setImage(null);
+	 *			this.model.getLevel().popPawn(mob);
+	 *			System.exit(0);
 	 *		}
 	 * }
 	 * </pre>
+	 * 
+	 * <p>
+	 * 		collison Enemy/Enemy and Enemy/Crystal
+	 * </p>
+	 * <pre>
+	 * {@code
+	 * 		else if ((element instanceof Enemy && mob instanceof Enemy) || (element instanceof Crystal && mob instanceof Enemy)) {
+	 *		canMove = false;
+	 *		}
+	 *	}
+	 * </pre>
+	 * <p>
+	 * 		Don't allow the enemy to go on exit
+	 * </p>
+	 * <pre>
+	 * {@code
+	 * 		else if ((element instanceof Exit && mob instanceof Enemy)) {
+	 *		canMove = false;
+	 *		}
+	 * }
+	 * </pre>
+	 * 
+	 * 
 	 * <p>
 	 * 		Test if is the Exit in front of Bob and has enough crystal. Then he can't pass.
 	 * </p>
 	 * <pre>
 	 * {@code
-	 * 		else if (element instanceof Exit && ((Bob) mob).getCrystalCount() >= crystal) {
-	 *		canMove = true;
-	 *		this.view.win();
-	 *		System.exit(0);
+	 * 		else if ((element instanceof Exit && mob instanceof Bob) && ((Bob) mob).getCrystalCount() >= crystal) {
+	 *		if ( ((Bob) mob).getCrystalCount() < crystal) {
+	 *			canMove = false;
 	 *		}
+	 *		else {
+	 *			canMove = true;
+	 *			this.view.win();
+	 *			element.setImage(null);
+	 *			this.model.getLevel().popPawn(element);
+	 *			mob.setImage(null);
+	 *			this.model.getLevel().popPawn(mob);
+	 *			System.exit(0);
+	 *		}
+	 *	    } 
 	 * }
 	 * </pre>
 	 */
@@ -400,10 +439,12 @@ public final class Controller implements IController {
 	 * 
 	 * 
 	 * @param mob
+	 * 			the pawn in movement 
 	 * @param controllerOrder
+	 * 			direction order
 	 * @param type
+	 * 			type of pawn in movement
 	 * @return canMove
-	 * 
 	 * 
 	 * <p>
 	 * 		Browse all entity in the array-list and test they can fall.

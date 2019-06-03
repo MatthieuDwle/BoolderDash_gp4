@@ -142,11 +142,6 @@ class ViewFrame implements KeyListener {
 	
 	 /**
      * Sets the frame size.
-     *
-     * @param sizeFrameWidth
-     *            the new size width of the frame.
-     * @param sizeFrameHeight
-     * 			  the new size height of the frame.
      */
 	protected void setSizeFrame() {
 		this.sizeFrameWidth = width*16*3;
@@ -190,8 +185,9 @@ class ViewFrame implements KeyListener {
      *
      * <pre>
      * {@code
-     *              	for (IPawn pawn : this.model.getLevel().getPawns()) {
+     *      for (IPawn pawn : this.model.getLevel().getPawns()) {
 			boardFrame.addPawn(pawn);
+     *      }
      * }
      * </pre>
      * <p>

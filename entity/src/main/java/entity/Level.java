@@ -17,7 +17,9 @@ public class Level extends Entity{
 	/**
 	 * The instance of level
 	 * @param width
+	 * 			the Level
 	 * @param height
+	 * 			the Level
 	 */
 	public Level (final int width, final int height) {
 		board = new Board(width, height);
@@ -45,6 +47,7 @@ public class Level extends Entity{
 	/**
 	 * putPawn add elements to the list pawns
 	 * @param pawn
+	 * 			the pawn to add
 	 */
 	public void putPawn(ActiveEntity pawn) {
 		pawns.add(pawn);
@@ -54,6 +57,7 @@ public class Level extends Entity{
 	 * PopPawn remove from the list pawns
 	 * 
 	 * @param pawn
+	 * 			the pawn to remove
 	 */
 	public void popPawn(ActiveEntity pawn) {
 		pawns.remove(pawn);
@@ -71,7 +75,8 @@ public class Level extends Entity{
 	/**
 	 * Set the background
 	 * 
-	 * @param width the new background
+	 * @param background
+	 * 			 the background of the frame
 	 */
 	public void setBackground(GraphicEntity background) {
 		this.background = background;

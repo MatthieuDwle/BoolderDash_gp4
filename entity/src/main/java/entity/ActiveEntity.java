@@ -24,9 +24,6 @@ public class ActiveEntity extends GraphicEntity implements IPawn{
 	}
 	/**
      * Sets the position.
-     *
-     * @param position
-     *            the position to set
      */
 	public Point getPosition() {
 		return this.position;

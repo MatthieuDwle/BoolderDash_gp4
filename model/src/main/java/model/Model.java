@@ -18,7 +18,9 @@ public final class Model extends Observable implements IModel {
 private Level level ;
 
 	/**
-	 * Instantiates a new model and run loadLevel.
+	 * 
+	 * @param levelNumber
+	 * 			the level number
 	 */
 	public Model(int levelNumber) {
 		try {
@@ -56,8 +58,8 @@ private Level level ;
 	/**
      * Load level.
      *
-     * @param code
-     *            the code
+     * @param levelNumber
+     *            the levelNumber
      */
 	/*
 	 * (non-Javadoc)

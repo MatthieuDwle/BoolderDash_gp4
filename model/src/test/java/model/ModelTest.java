@@ -19,16 +19,19 @@ public class ModelTest {
     private Model model;
 
  
-    /** Instantiate a new level number*/
+    /** 
+     * Instantiate new model
+     * @throws Exception
+     * 			throws exception
+     */
     @Before
     public void setUp() throws Exception {
         this.model = new Model(1);
     }
 
     /**
-     * Test method for loading the level {@link model.Model#loadLevel(java.lang.String)}.
+     * test link with level
      */
-    
     @Test
     public void testGetXindex() {
         try {

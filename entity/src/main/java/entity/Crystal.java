@@ -22,7 +22,7 @@ public class Crystal extends ActiveEntity implements IMovable{
 	/**
 	 * Move Down for crystal
 	 * @param test
-	 * if it's true crystal move down
+	 * 			if it's true crystal move down
 	 */
 	public void moveDown(boolean test) {
 		if (test == true) {
@@ -34,8 +34,6 @@ public class Crystal extends ActiveEntity implements IMovable{
 	
 	/**
 	 * Sets the Falling
-	 * 
-	 * @param falling the new falling
 	 */
 	public void resetFalling() {
 		this.falling = 0;
@@ -51,9 +49,7 @@ public class Crystal extends ActiveEntity implements IMovable{
 	}
 	
 	/**
-	 * Sets the Falling
-	 * 
-	 * @param falling increment
+	 * Sets the Falling increment 
 	 */
 	public void setFalling() {
 		this.falling++;

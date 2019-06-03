@@ -26,7 +26,6 @@ final class DBConnection {
 	/**
 	 * Gets the single instance of DBConnection.
 	 * 
-	</pre>
      * <p>
      * Gets the single instance of DBConnection.
      * </p>
@@ -34,9 +33,10 @@ final class DBConnection {
      * <pre>
      * {@code
      *      	if (DBConnection.INSTANCE == null) {
-			DBConnection.INSTANCE = new DBConnection();
-		}
+	 *		DBConnection.INSTANCE = new DBConnection();
+	 *	}
      * }
+     * </pre>
 	 * @return single instance of DBConnection
 	 */
 	public static synchronized DBConnection getInstance() {

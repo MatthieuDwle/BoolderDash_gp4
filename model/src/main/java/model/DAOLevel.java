@@ -14,7 +14,9 @@ public class DAOLevel extends DAOEntity<Level> {
 	 *  Instantiate DAO Level 
 	 *  
 	 * @param connection
+	 * 			the connection
 	 * @throws SQLException
+	 * 			throws sql exception
 	 */
 	public DAOLevel(Connection connection) throws SQLException {
 		super(connection);
@@ -75,6 +77,7 @@ public class DAOLevel extends DAOEntity<Level> {
 			ResultSet resultSetHeight = callPrepare("Height",lvlNb);
 			ResultSet resultSetWidth = callPrepare("Width",lvlNb);
 			ResultSet resultSetLevel = callPrepare("Level",lvlNb);
+     * 		}
      * }
      * </pre>
      * <p>
@@ -84,11 +87,12 @@ public class DAOLevel extends DAOEntity<Level> {
      *
      * <pre>
      * {@code
-     * if (resultSetHeight.first() && resultSetWidth.first()) {
-	 *
-	 *		    int width = resultSetWidth.getInt("NbColum")+2;
-	 *			int height = resultSetHeight.getInt("NbLigne")+3;
-	 *			level = new Level(width, height);      
+	 *     if (resultSetHeight.first() && resultSetWidth.first()) {
+	 *	 
+	 *	 		    int width = resultSetWidth.getInt("NbColum")+2;
+	 *	 			int height = resultSetHeight.getInt("NbLigne")+3;
+	 *	 			level = new Level(width, height);      
+	 *     }
      * }
      * </pre>
      * <p>
@@ -123,10 +127,11 @@ public class DAOLevel extends DAOEntity<Level> {
      *
      * <pre>
      * {@code
-     *  else {
-	 *						resultSetLevel.next();
-	 *						char Element = resultSetLevel.getString("Element").charAt(0);
-	 *						int Ligne = resultSetLevel.getInt("Ligne");
+     *  	else {
+	 *			resultSetLevel.next();
+	 *			char Element = resultSetLevel.getString("Element").charAt(0);
+	 *			int Ligne = resultSetLevel.getInt("Ligne");
+	 *      }
 	 *}
 	 *
 	 *
@@ -140,9 +145,6 @@ public class DAOLevel extends DAOEntity<Level> {
      *     	this.boardFrame.addKeyListener(this);
      * }
      * </pre>
-     *
-     *
-     *  </pre>
      * <p>
      * 
 	 * Match the pattern to an image in the database
@@ -192,46 +194,30 @@ public class DAOLevel extends DAOEntity<Level> {
 	 *							exit.setPosition(x, y);
 	 *							level.putPawn(exit);
 	 *						}
+	 * }
      * </pre>
-     * 
-     * 
-     *  </pre>
      * <p>
      * Nothing to do 
      * </p>
      *
      * <pre>
      * {@code
-     *        else if (Element == lvlProperties.getGap()) {
+     *      else if (Element == lvlProperties.getGap()) {
 	 *						
 	 *					}
-	 *					else {
+	 *		else {
 	 *						System.out.println("Caractère inconnue");
+     *        }
      * }
-     * 
      * 
      * </pre>
      * 
-     * 
-     *  </pre>
-     * <p>
-     * Return level at the end of try
-     * </p>
-     *
-     * <pre>
-     * {@code
-     *        		return level;
-	 *		} catch (final SQLException e) {
-	 *			e.printStackTrace();
-	 *		}
-	 *		return null;
-     * }
-     *
-     * 
 	 * 
 	 * @param lvlNb
+	 * 			the number of the Level
 	 * @return level
 	 * @throws IOException
+	 * 			throws the exception
 	 */
 	public Level load(final int lvlNb) throws IOException {
 		try {
@@ -333,7 +319,9 @@ public class DAOLevel extends DAOEntity<Level> {
 	 * Search in database the level
 	 * 
 	 * @param type
+	 * 			intile of sql procedure 
 	 * @param lvlNb
+	 * 			the level number
 	 * @return resultSet
 	 */
 	private ResultSet callPrepare(String type, int lvlNb) {

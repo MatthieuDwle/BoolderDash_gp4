@@ -14,7 +14,9 @@ public class Board {
 	/**
 	 *  Instantiate width and height
 	 * @param width
+	 * 			the width
 	 * @param height
+	 * 			the height
 	 */
 	public Board(final int width, final int height) {
 		this.setWidth(width);
@@ -33,7 +35,8 @@ public class Board {
 	/**
 	 * Set the width
 	 * 
-	 * @param width the new width
+	 * @param width 
+	 * 			the width
 	 */
 	public void setWidth(final int width) {
 		this.width = width; 

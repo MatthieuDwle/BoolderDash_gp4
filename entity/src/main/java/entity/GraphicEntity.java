@@ -1,4 +1,4 @@
-package entity;
+	package entity;
 
 
 import java.awt.Image;
@@ -19,8 +19,7 @@ public class GraphicEntity extends Entity implements ISquare{
 private Image image ;
 	/**The Image Name */
 private String imageName;
-	
-/**
+
 	 /**
      * Instantiates a new Graphic Entity.
      *
