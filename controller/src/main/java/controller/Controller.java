@@ -276,51 +276,71 @@ public final class Controller implements IController {
 				break;
 			}
 		}
-		if (element instanceof Dirt && mob instanceof Bob) {
+		if (element == null) {
 			canMove = true;
-			element.setImage(null);
-			this.model.getLevel().popPawn(element);
-		} else if (element instanceof Dirt && mob instanceof Enemy) {
-			canMove = false;
-		} else if (element instanceof Crystal && mob instanceof Bob) {
-			canMove = true;
-			element.setImage(null);
-			this.model.getLevel().popPawn(element);
-			((Bob) mob).addCrystal(crystal);
-		} else if (element instanceof Wall || element instanceof Rock) {
-			canMove = false;
-		}
-		else if ((element instanceof Enemy && mob instanceof Bob) || (element instanceof Bob && mob instanceof Enemy)) {
-			canMove = true;
-			this.view.lose();
-			element.setImage(null);
-			this.model.getLevel().popPawn(element);
-			mob.setImage(null);
-			this.model.getLevel().popPawn(mob);
-			System.exit(0);
-		}
-		else if ((element instanceof Enemy && mob instanceof Enemy) || (element instanceof Crystal && mob instanceof Enemy)) {
-			canMove = false;
-		}
-		else if ((element instanceof Exit && mob instanceof Enemy)) {
-			canMove = false;
-		}
-		else if ((element instanceof Exit && mob instanceof Bob) && ((Bob) mob).getCrystalCount() >= crystal) {
-			if ( ((Bob) mob).getCrystalCount() < crystal) {
-				canMove = false;
-			}
-			else {
-				canMove = true;
-				this.view.win();
-				element.setImage(null);
-				this.model.getLevel().popPawn(element);
-				mob.setImage(null);
-				this.model.getLevel().popPawn(mob);
-				System.exit(0);
-			}
 		}
 		else {
-			canMove = true;
+			String elementName = String.valueOf(element.getClass().getName().substring(7));
+			
+			switch(elementName) {
+			case "Dirt":
+				if(mob instanceof Bob) {
+					canMove = true;
+					element.setImage(null);
+					this.model.getLevel().popPawn(element);
+				}
+				else {
+					canMove = false;
+				}
+			break;
+			case "Crystal":
+				if(mob instanceof Bob) {
+					canMove = true;
+					element.setImage(null);
+					this.model.getLevel().popPawn(element);
+					((Bob) mob).addCrystal(crystal);
+				}
+				else {
+					canMove = false;
+				}
+			break;
+			case "Enemy":
+				if(mob instanceof Bob) {
+					canMove = true;
+					this.view.lose();
+					element.setImage(null);
+					this.model.getLevel().popPawn(element);
+					mob.setImage(null);
+					this.model.getLevel().popPawn(mob);
+					System.exit(0);
+				}
+				else {
+					canMove = false;
+				}
+			break;
+			case "Rock":
+				canMove = false;
+			break;
+			case "Exit":
+				if(mob instanceof Bob) {
+					if (((Bob) mob).getCrystalCount() >= crystal) {
+						canMove = true;
+						this.view.win();
+						element.setImage(null);
+						this.model.getLevel().popPawn(element);
+						mob.setImage(null);
+						this.model.getLevel().popPawn(mob);
+						System.exit(0);
+					}
+					else {
+						canMove = false;
+					}
+				}
+				else {
+					canMove = false;
+				}
+			break;
+			}
 		}
 		return canMove;
 
@@ -539,7 +559,6 @@ public final class Controller implements IController {
 				if (!(pawn instanceof Bob) && ((Rock) mob).getFalling() > 0 && !canMove) {
 					((Rock) mob).resetFalling();
 				}
-
 				if (pawn instanceof Bob && ((Rock) mob).getFalling() > 0 && !canMove) {
 					((Rock) mob).resetFalling();
 					this.view.lose();
